@@ -74,6 +74,13 @@ BRAND_MARKERS = {
 TAGALOG_QUESTION_WORDS = [
     "ano", "alin", "paano", "bakit", "kailan", "saan", "sino",
     "kanino", "ilan", "gaano", "kumusta",
+    # "saang" (where / in which place, as in "Saang lugar...?") is a standard
+    # Tagalog interrogative. Added 2026-10-24: the gate false-negatived on
+    # TE-how-noise-cancelling-works, whose approved script and recorded
+    # narration close with "Saang lugar mo pinaka-gustong gamitin...?".
+    # This corrects an incomplete list; it does not weaken the gate, which
+    # still requires a Tagalog interrogative + '?'.
+    "saang",
 ]
 
 # Safe-zone containment tolerance (px). profiles.json's own canonical layout
