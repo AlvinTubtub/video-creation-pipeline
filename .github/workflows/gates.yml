@@ -1,0 +1,94 @@
+# Profile-aware CI gates for the Tech Explanasyon / Futurism Tech pipeline.
+#
+# Triggers: pushes to per-project branches (FT-<slug> / TE-<slug>),
+# pull requests, and manual dispatch. No secrets, no deploys, no publishing.
+#
+# Project convention (see phase-3/README.md): a project lives at
+# projects/<branch-name>/ (e.g. projects/TE-how-gps-finds-you/) and contains
+# film.json + compositions/. On dispatch you may pass project_dir instead.
+#
+# Environment notes (proven in Phase 2, Kaggle run 24 Oct 2026):
+# - HyperFrames 0.8.117 requires Node >= 22 (Kaggle's image shipped 20.19.0).
+# - chrome-headless-shell needs its system libraries on Ubuntu 24.04
+#   (note libasound2t64, NOT libasound2 -- the noble rename).
+
+name: Profile gates
+
+on:
+  push:
+    branches:
+      - 'FT-*'
+      - 'TE-*'
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      project_dir:
+        description: 'Project directory to gate (e.g. projects/TE-my-topic). Leave blank to auto-detect.'
+        required: false
+        default: ''
+      profile:
+        description: 'Override profile detection (FT or TE). Leave blank to detect from the directory name.'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  gates:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install chrome-headless-shell system libraries
+        run: |
+          export DEBIAN_FRONTEND=noninteractive
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2t64 libpango-1.0-0 libcairo2 libnss3 libnspr4 libx11-6 libxcb1 libxext6 libxi6 libxtst6 libxss1 libglib2.0-0 libdbus-1-3 libexpat1
+
+      - name: Install HyperFrames (pinned)
+        run: npm install -g hyperframes@0.8.117
+
+      - name: Detect project directory
+        id: detect
+        run: |
+          if [ -n "${{ inputs.project_dir }}" ]; then
+            PROJECT_DIR="${{ inputs.project_dir }}"
+          elif [ -d "projects/${GITHUB_REF_NAME}" ]; then
+            PROJECT_DIR="projects/${GITHUB_REF_NAME}"
+          else
+            PROJECT_DIR=$(find projects -maxdepth 2 -name film.json -print -quit 2>/dev/null | xargs -r dirname)
+          fi
+          if [ -z "$PROJECT_DIR" ] || [ ! -f "$PROJECT_DIR/film.json" ]; then
+            echo "::error::No project directory found. Put the project at projects/<branch-name>/ (branch FT-<slug> or TE-<slug>), or dispatch with a project_dir input."
+            exit 1
+          fi
+          echo "project_dir=$PROJECT_DIR" >> "$GITHUB_OUTPUT"
+          echo "Gating project: $PROJECT_DIR"
+
+      - name: HyperFrames check
+        run: |
+          cd "${{ steps.detect.outputs.project_dir }}"
+          TMPDIR="$PWD/.hf-tmp" hyperframes check
+
+      - name: fromTo scan (existing skill tool, complementary to the .from() gate)
+        run: |
+          if [ -f skills/spatial-film/scripts/fromto-scan.py ] && ls "${{ steps.detect.outputs.project_dir }}"/compositions/*.html >/dev/null 2>&1; then
+            python3 skills/spatial-film/scripts/fromto-scan.py "${{ steps.detect.outputs.project_dir }}"/compositions/*.html
+          else
+            echo "fromto-scan.py or compositions not present; skipping (profile_gates.py from-scan still runs below)."
+          fi
+
+      - name: Profile gates
+        run: |
+          if [ -n "${{ inputs.profile }}" ]; then
+            python3 pipeline/profile_gates.py "${{ steps.detect.outputs.project_dir }}" --profiles profile/profiles.json --profile "${{ inputs.profile }}"
+          else
+            python3 pipeline/profile_gates.py "${{ steps.detect.outputs.project_dir }}" --profiles profile/profiles.json
+          fi
