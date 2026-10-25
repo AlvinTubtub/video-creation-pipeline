@@ -1,0 +1,36 @@
+<!-- TE vertical test scene s02-close (2.5s): minimal end card - big brand logo + CTA pill, held.
+     The m-brand badge overlay fades in at 6.2s (after s01) and stays - it is visible over this scene. -->
+<template>
+<link rel="stylesheet" href="assets/kit.css">
+<style>
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('assets/fonts/poppins-500.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('assets/fonts/poppins-700.woff2') format('woff2'); }
+#root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: 'Poppins', sans-serif; }
+.s02-layer { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+#s02-card { position: absolute; left: 48px; top: 560px; width: 884px; text-align: center; }
+#s02-card .kit-cta { max-width: 860px; }
+#s02-sub { margin-top: 34px; font: 500 40px/1.3 'Poppins', sans-serif; color: var(--ink-soft, #33435F); }
+</style>
+<div id="root" data-composition-id="s02-close" data-width="1080" data-height="1920">
+  <div id="s02-ground" class="clip kit-ground" data-start="0" data-duration="2.5" data-track-index="0"></div>
+  <div id="s02-stage" class="clip" data-start="0" data-duration="2.5" data-track-index="1" style="position:absolute; inset:0; perspective:1866px; perspective-origin:50% 50%;">
+    <div id="s02-drift" class="s02-layer"><div id="s02-cam" class="s02-layer"><div class="kit-floor"></div></div></div>
+  </div>
+  <div id="s02-card" class="clip" data-start="0" data-duration="2.5" data-track-index="2">
+    <div class="kit-logo" style="--h:150px"><b>Tech <i>Explanasyon</i></b></div>
+    <div style="margin-top:44px;"><span class="kit-cta">Follow me for more tech explained</span></div>
+    <div id="s02-sub">New tech, explained simply.</div>
+  </div>
+  <div id="s02-grain" class="clip kit-grain" data-start="0" data-duration="2.5" data-track-index="9"></div>
+</div>
+<script>
+(function () {
+  var tl = gsap.timeline({ paused: true });
+  tl.fromTo('#s02-drift', { scale: 1, rotationY: 0 }, { scale: 1.015, rotationY: 0.8, duration: 1.25, ease: 'sine.inOut', force3D: true }, 0);
+  tl.fromTo('#s02-drift', { scale: 1.015, rotationY: 0.8 }, { scale: 1, rotationY: 0, duration: 1.25, ease: 'sine.inOut', force3D: true, immediateRender: false }, 1.25);
+  tl.fromTo('#s02-card', { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.6, ease: 'expo.out', force3D: true }, 0.1);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['s02-close'] = tl;
+})();
+</script>
+</template>
