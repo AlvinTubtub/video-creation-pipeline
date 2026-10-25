@@ -1,0 +1,1 @@
+{"devDependencies":{"hyperframes":"0.8.117"},"name":"te-vertical-test","private":true,"scripts":{"check":"npx --yes hyperframes@0.8.117 check","render":"bash render.sh"},"type":"module"}
