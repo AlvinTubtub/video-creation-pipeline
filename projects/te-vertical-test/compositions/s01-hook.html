@@ -1,0 +1,81 @@
+<!-- TE vertical test scene s01-hook (6s): hook question on screen from t=0 (headline band), a satellite->phone
+     diagram on the stage, one caption line in the caption band (right of the presenter zone). All geometry per
+     profiles.json TE layout. Presenter + badge are overlays (m-kape / m-brand), never drawn by the scene. -->
+<template>
+<link rel="stylesheet" href="assets/kit.css">
+<style>
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('assets/fonts/poppins-500.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('assets/fonts/poppins-700.woff2') format('woff2'); }
+#root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: 'Poppins', sans-serif; }
+.s01-layer { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+.s01-world { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; will-change: transform; }
+.s01-center { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); }
+#s01-headline { position: absolute; left: 60px; top: 216px; width: 880px; }
+#s01-kicker { font: 700 34px/1.2 'Poppins', sans-serif; letter-spacing: .14em; color: var(--wh-ink, #0A7468); margin-bottom: 14px; }
+#s01-question { font: 700 76px/1.12 'Poppins', sans-serif; color: var(--ink); }
+#s01-caption { position: absolute; left: 486px; top: 1301px; width: 448px; text-align: left; opacity: 0; }
+</style>
+<div id="root" data-composition-id="s01-hook" data-width="1080" data-height="1920">
+  <div id="s01-ground" class="clip kit-ground" data-start="0" data-duration="6" data-track-index="0"></div>
+  <div id="s01-stage" class="clip" data-start="0" data-duration="6" data-track-index="1" style="position:absolute; inset:0; perspective:1866px; perspective-origin:50% 50%;">
+    <div id="s01-drift" class="s01-layer">
+      <div id="s01-cam" class="s01-layer">
+        <div class="kit-floor"></div>
+        <div id="s01-diagram" class="s01-world"><div class="s01-center">
+          <svg width="900" height="720" viewBox="0 0 900 720">
+            <line id="s01-l1" x1="140" y1="95" x2="450" y2="585" stroke="#0F9F8F" stroke-width="5" stroke-dasharray="14 12"/>
+            <line id="s01-l2" x1="450" y1="55" x2="450" y2="585" stroke="#0F9F8F" stroke-width="5" stroke-dasharray="14 12"/>
+            <line id="s01-l3" x1="760" y1="95" x2="450" y2="585" stroke="#0F9F8F" stroke-width="5" stroke-dasharray="14 12"/>
+            <g id="s01-sat1"><circle cx="140" cy="95" r="44" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="5"/><circle cx="140" cy="95" r="14" fill="#FF7A1A"/><text x="140" y="182" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="32" fill="#0B1E3F">SAT 1</text></g>
+            <g id="s01-sat2"><circle cx="450" cy="55" r="44" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="5"/><circle cx="450" cy="55" r="14" fill="#FF7A1A"/><text x="450" y="142" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="32" fill="#0B1E3F">SAT 2</text></g>
+            <g id="s01-sat3"><circle cx="760" cy="95" r="44" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="5"/><circle cx="760" cy="95" r="14" fill="#FF7A1A"/><text x="760" y="182" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="32" fill="#0B1E3F">SAT 3</text></g>
+            <g id="s01-phone">
+              <rect x="362" y="515" width="176" height="160" rx="28" fill="#0B1E3F"/>
+              <rect x="380" y="537" width="140" height="96" rx="10" fill="#F6F2EA"/>
+              <circle id="s01-pin" cx="450" cy="585" r="18" fill="#E5484D"/>
+              <text x="450" y="712" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="32" fill="#0B1E3F">YOUR PHONE</text>
+            </g>
+          </svg>
+        </div></div>
+      </div>
+    </div>
+  </div>
+  <div id="s01-headline" class="clip" data-start="0" data-duration="6" data-track-index="2">
+    <div id="s01-kicker">TECH EXPLANASYON</div>
+    <div id="s01-question">How does your phone know where you are?</div>
+  </div>
+  <div id="s01-caption" class="clip kit-caption" data-start="0" data-duration="6" data-track-index="3">Your phone listens to satellites. It never shouts back.</div>
+  <div id="s01-grain" class="clip kit-grain" data-start="0" data-duration="6" data-track-index="9"></div>
+</div>
+<script>
+(function () {
+  var tl = gsap.timeline({ paused: true });
+  // hook question is ON SCREEN from the first frame (TE rule) - only a small settle, never a fade-in
+  gsap.set('#s01-headline', { opacity: 1 });
+  tl.fromTo('#s01-headline', { y: 14 }, { y: 0, duration: 0.5, ease: 'power2.out', force3D: true }, 0);
+  // drift breath, identity at both ends (canon floor seam)
+  tl.fromTo('#s01-drift', { scale: 1, rotationY: 0, rotationX: 0 }, { scale: 1.02, rotationY: 1.2, rotationX: -0.6, duration: 3, ease: 'sine.inOut', force3D: true }, 0);
+  tl.fromTo('#s01-drift', { scale: 1.02, rotationY: 1.2, rotationX: -0.6 }, { scale: 1, rotationY: 0, rotationX: 0, duration: 3, ease: 'sine.inOut', force3D: true, immediateRender: false }, 3);
+  // diagram: satellites pop in, signal lines draw down, phone lands, pin pulses
+  gsap.set('#s01-diagram', { x: -30, y: -135, opacity: 0, force3D: true });
+  tl.fromTo('#s01-diagram', { opacity: 0 }, { opacity: 1, duration: 0.4, ease: 'power1.out', force3D: true }, 0.35);
+  ['#s01-sat1', '#s01-sat2', '#s01-sat3'].forEach(function (s, i) {
+    tl.fromTo(s, { scale: 0, transformOrigin: 'center', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: 'back.out(1.7)', force3D: true }, 0.5 + i * 0.25);
+  });
+  ['#s01-l1', '#s01-l2', '#s01-l3'].forEach(function (s, i) {
+    var len = 600;
+    tl.fromTo(s, { strokeDashoffset: len }, { strokeDashoffset: 0, duration: 0.7, ease: 'power2.inOut' }, 1.1 + i * 0.25);
+  });
+  tl.fromTo('#s01-phone', { scale: 0.6, transformOrigin: '450px 595px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.6)', force3D: true }, 1.9);
+  tl.fromTo('#s01-pin', { scale: 1, transformOrigin: '450px 585px' }, { scale: 1.35, duration: 0.32, ease: 'sine.inOut', yoyo: true, repeat: 3, force3D: true }, 2.6);
+  // caption line lands in the caption band (right of the presenter)
+  tl.fromTo('#s01-caption', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: 'expo.out', force3D: true }, 2.9);
+  // exit to canon floor before the seam
+  tl.fromTo('#s01-diagram', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 5.5);
+  tl.fromTo('#s01-headline', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 5.5);
+  tl.fromTo('#s01-caption', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 5.5);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['s01-hook'] = tl;
+})();
+</script>
+</template>
