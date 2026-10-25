@@ -1,1 +1,67 @@
-{"_doc": "probe"}
+{
+  "_doc": "TE vertical test project (Phase 1.5). Silent placeholder narration (8.5s) - timing only, no voice. One hook scene + a short end-card scene so the m-brand badge timing (in after s01) is exercised exactly as in a real film.",
+  "name": "te-vertical-test",
+  "hyperframes": "0.8.117",
+  "gsap": "3.14.2",
+  "width": 1080,
+  "height": 1920,
+  "fps": 60,
+  "bpm": 60,
+  "beats_per_bar": 1,
+  "ground": "#F6F2EA",
+  "scenes": [
+    [
+      "s01-hook",
+      6.0
+    ],
+    [
+      "s02-close",
+      2.5
+    ]
+  ],
+  "overlays": [
+    {
+      "id": "m-kape",
+      "track": 2,
+      "z": 5
+    },
+    {
+      "id": "m-brand",
+      "track": 3,
+      "z": 6
+    }
+  ],
+  "audio": [
+    {
+      "id": "vo",
+      "src": "assets/audio/vo-master.wav",
+      "dur": 8.5,
+      "volume": 1,
+      "track": 9
+    }
+  ],
+  "bgm": null,
+  "sfx": {
+    "click": [
+      "click.mp3",
+      0.45
+    ],
+    "pop": [
+      "pop.mp3",
+      0.3
+    ],
+    "ping": [
+      "ping.mp3",
+      0.4
+    ],
+    "whoosh": [
+      "whoosh.mp3",
+      0.16
+    ],
+    "impact": [
+      "impact-bass-1.mp3",
+      0.1
+    ]
+  },
+  "cues": []
+}
