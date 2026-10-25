@@ -1,0 +1,41 @@
+<template>
+<link rel="stylesheet" href="assets/kit.css">
+<style>
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('assets/fonts/poppins-500.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('assets/fonts/poppins-700.woff2') format('woff2'); }
+#root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: 'Poppins', sans-serif; }
+.s06-signoff-layer { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+#s06-signoff-headline { position: absolute; left: 60px; top: 268px; width: 880px; font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F; }
+#s06-signoff-diagram { position: absolute; left: 90px; top: 470px; width: 900px; height: 710px; }
+</style>
+<div id="root" data-composition-id="s06-signoff" data-width="1080" data-height="1920">
+  <div id="s06-signoff-ground" class="clip kit-ground" data-start="0" data-duration="1.96" data-track-index="0"></div>
+  <div id="s06-signoff-stage" class="clip" data-start="0" data-duration="1.96" data-track-index="1" style="position:absolute; inset:0; perspective:1866px; perspective-origin:50% 50%;">
+    <div id="s06-signoff-drift" class="s06-signoff-layer">
+      <div class="kit-floor"></div>
+      <div id="s06-signoff-diagram">
+        <svg width="900" height="710" viewBox="0 0 900 710">
+
+<g id="s06-logo"><text x="450" y="320" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="72" fill="#0B1E3F">Tech</text><text x="450" y="420" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="72" fill="#0F9F8F">Explanasyon</text></g>
+<g id="s06-line"><text x="450" y="500" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="34" fill="#0B1E3F">Follow me for more tech explained. See yah.</text></g>
+
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div id="s06-signoff-headline" class="clip" data-start="0" data-duration="1.96" data-track-index="2"><div id="s06-signoff-kicker" style="font: 700 34px/1.2 'Poppins', sans-serif; letter-spacing: .14em; color: #0F9F8F; margin-bottom: 14px;">TECH EXPLANASYON</div><div style="font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F;">Follow me for more tech explained. See yah.</div></div>
+  <div id="s06-signoff-grain" class="clip kit-grain" data-start="0" data-duration="1.96" data-track-index="9"></div>
+</div>
+<script>
+(function () {
+  var tl = gsap.timeline({ paused: true });
+  tl.fromTo('#s06-signoff-headline', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: 'expo.out', force3D: true }, 0.08);
+  tl.fromTo('#s06-signoff-drift', { scale: 1 }, { scale: 1.015, duration: 0.98, ease: 'sine.inOut', force3D: true }, 0.08);
+  tl.fromTo('#s06-signoff-drift', { scale: 1.015 }, { scale: 1, duration: 0.98, ease: 'sine.inOut', force3D: true, immediateRender: false }, 1.06);
+  tl.fromTo('#s06-logo', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.2);
+  tl.fromTo('#s06-line', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.9);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['s06-signoff'] = tl;
+})();
+</script>
+</template>

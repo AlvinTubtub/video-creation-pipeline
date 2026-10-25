@@ -1,0 +1,124 @@
+{
+ "_doc": "TE-how-magnets-work: How Magnets Work. 9:16 vertical TE film, 57.34s, short version approved at ~55s by Alvin 2026-10-25 (below TE 95-115s target; gates duration band fails at 85-125, pre-approved override, recorded not hidden). Carla presenter + badge + burned-in captions.",
+ "audio": [
+  {
+   "dur": 57.34,
+   "id": "vo",
+   "src": "assets/audio/vo-master.wav",
+   "track": 9,
+   "volume": 1
+  }
+ ],
+ "beats_per_bar": 1,
+ "bgm": null,
+ "bpm": 60,
+ "cues": [],
+ "duration_s": 57.34,
+ "fps": 60,
+ "ground": "#F6F2EA",
+ "gsap": "3.14.2",
+ "height": 1920,
+ "hyperframes": "0.8.117",
+ "layout": {
+  "caption_band": {
+   "h": 240,
+   "w": 448,
+   "x": 486,
+   "y": 1280
+  },
+  "presenter_zone": {
+   "feet_y": 1540,
+   "h": 335,
+   "w": 361,
+   "x": 24,
+   "y": 1205
+  },
+  "stage": {
+   "h": 710,
+   "w": 900,
+   "x": 60,
+   "y": 470
+  }
+ },
+ "name": "how-magnets-work",
+ "overlays": [
+  {
+   "id": "m-kape",
+   "track": 2,
+   "z": 5
+  },
+  {
+   "id": "m-brand",
+   "track": 3,
+   "z": 6
+  },
+  {
+   "id": "m-caption",
+   "track": 4,
+   "z": 7
+  }
+ ],
+ "profile": "TE",
+ "project_id": "TE-how-magnets-work",
+ "scenes": [
+  [
+   "s01-hook",
+   7.3
+  ],
+  [
+   "s02-domains",
+   13.04
+  ],
+  [
+   "s03-field-poles",
+   16.24
+  ],
+  [
+   "s04-earth-electro",
+   9.2
+  ],
+  [
+   "s05-closing",
+   9.6
+  ],
+  [
+   "s06-signoff",
+   1.96
+  ]
+ ],
+ "scene_timings": [
+  {
+   "scene": "s01-hook",
+   "start": 0.0,
+   "end": 6.62
+  },
+  {
+   "scene": "s02-domains",
+   "start": 7.3,
+   "end": 20.2
+  },
+  {
+   "scene": "s03-field-poles",
+   "start": 20.34,
+   "end": 36.28
+  },
+  {
+   "scene": "s04-earth-electro",
+   "start": 36.58,
+   "end": 45.4
+  },
+  {
+   "scene": "s05-closing",
+   "start": 45.78,
+   "end": 54.62
+  },
+  {
+   "scene": "s06-signoff",
+   "start": 55.38,
+   "end": 57.34
+  }
+ ],
+ "sfx": {},
+ "width": 1080,
+ "stage": "BUILT"
+}
