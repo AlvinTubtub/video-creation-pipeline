@@ -64,7 +64,7 @@ jobs:
       - name: HyperFrames check (0 errors required before rendering)
         run: |
           cd "${{ steps.resolve.outputs.project_dir }}"
-          TMPDIR="$PWD/.hf-tmp" hyperframes check
+          mkdir -p .hf-tmp && TMPDIR="$PWD/.hf-tmp" hyperframes check
 
       - name: Render + verify + REPORT
         id: render
