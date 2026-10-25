@@ -1,0 +1,135 @@
+# Test render on CPU-only GitHub Actions runners (DISPOSABLE TEST — branch test-actions-render only).
+#
+# Manual trigger only (workflow_dispatch). No push/PR triggers, so this never
+# runs on main and never interferes with gates.yml.
+#
+# Differences from the Kaggle route, all deliberate:
+# - NO --browser-gpu flag: Actions runners are CPU-only, so Chrome runs in
+#   software (llvmpipe) mode. Software GPU mode is EXPECTED here and is NOT
+#   a failure, unlike the Kaggle stop condition.
+# - ffmpeg is installed (runners do not ship it) for the ffprobe verify step.
+# - The MP4 is uploaded as a workflow artifact for download + local ffprobe.
+
+name: Render (test)
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_dir:
+        description: 'Project directory to render (e.g. projects/te-vertical-test)'
+        required: false
+        default: 'projects/te-vertical-test'
+      output_name:
+        description: 'Output MP4 filename (written under <project_dir>/renders/)'
+        required: false
+        default: 'te-vertical-test.mp4'
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install chrome-headless-shell system libraries + ffmpeg
+        run: |
+          export DEBIAN_FRONTEND=noninteractive
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2t64 libpango-1.0-0 libcairo2 libnss3 libnspr4 libx11-6 libxcb1 libxext6 libxi6 libxtst6 libxss1 libglib2.0-0 libdbus-1-3 libexpat1 ffmpeg
+
+      - name: Install HyperFrames (pinned)
+        run: npm install -g hyperframes@0.8.117
+
+      - name: Resolve project directory
+        id: resolve
+        run: |
+          PROJECT_DIR="${{ inputs.project_dir }}"
+          if [ ! -f "$PROJECT_DIR/film.json" ]; then
+            echo "::error::No film.json at $PROJECT_DIR — dispatch with a valid project_dir."
+            exit 1
+          fi
+          echo "project_dir=$PROJECT_DIR" >> "$GITHUB_OUTPUT"
+          echo "Rendering project: $PROJECT_DIR"
+
+      - name: HyperFrames check (0 errors required before rendering)
+        run: |
+          cd "${{ steps.resolve.outputs.project_dir }}"
+          TMPDIR="$PWD/.hf-tmp" hyperframes check
+
+      - name: Render + verify + REPORT
+        id: render
+        run: |
+          cd "${{ steps.resolve.outputs.project_dir }}"
+          mkdir -p renders .hf-tmp
+          export TMPDIR="$PWD/.hf-tmp"
+          OUT="renders/${{ inputs.output_name }}"
+          LOG="renders/render.log"
+          START=$(date +%s)
+          npx --yes hyperframes@0.8.117 render --fps 60 --workers 6 -o "$OUT" > "$LOG" 2>&1
+          CODE=$?
+          END=$(date +%s)
+          WALL=$((END - START))
+          [ "$WALL" -lt 1 ] && WALL=1
+          echo "render exit code: $CODE (wall ${WALL}s)"
+          if [ "$CODE" -ne 0 ]; then
+            echo "::error::Render failed (exit $CODE). Last 80 log lines:"
+            tail -n 80 "$LOG"
+            exit 1
+          fi
+          if [ ! -f "$OUT" ]; then
+            echo "::error::Render exited 0 but $OUT is missing."
+            exit 1
+          fi
+          GPU_MODE=$(grep -o '"browserGpuMode":"[a-z]*"' "$LOG" | head -1 | sed 's/.*:"//; s/"//' || true)
+          GPU_MODE=${GPU_MODE:-unknown}
+          echo "gpu_mode: $GPU_MODE (software is EXPECTED on CPU-only runners; not a failure)"
+          CODEC=$(ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of csv=p=0 "$OUT")
+          WH=$(ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 "$OUT")
+          FPS=$(ffprobe -v error -select_streams v:0 -show_entries stream=r_frame_rate -of csv=p=0 "$OUT")
+          FRAMES=$(ffprobe -v error -select_streams v:0 -show_entries stream=nb_frames -of csv=p=0 "$OUT")
+          DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$OUT")
+          SIZE=$(stat -c%s "$OUT")
+          AUDIO=$(ffprobe -v error -select_streams a -show_entries stream=codec_name -of csv=p=0 "$OUT" || true)
+          echo "codec: $CODEC (want h264)"
+          echo "resolution: $WH (want 1080,1920)"
+          echo "fps: $FPS (want 60/1)"
+          echo "frames: $FRAMES (want 510, tolerance 490-530)"
+          echo "duration: ${DUR}s (want 8.5s, tolerance 8.0-9.0s)"
+          echo "size: $SIZE bytes"
+          echo "audio streams: ${AUDIO:-none}"
+          [ "$CODEC" = "h264" ] || { echo "::error::Codec is $CODEC, want h264."; exit 1; }
+          [ "$WH" = "1080,1920" ] || { echo "::error::Resolution is $WH, want 1080,1920."; exit 1; }
+          [ "$FPS" = "60/1" ] || { echo "::error::FPS is $FPS, want 60/1."; exit 1; }
+          if [ "$FRAMES" -lt 490 ] || [ "$FRAMES" -gt 530 ]; then echo "::error::Frame count $FRAMES outside 490-530."; exit 1; fi
+          CAPFPS=$(awk -v f="$FRAMES" -v w="$WALL" 'BEGIN { printf "%.2f", f/w }')
+          echo ""
+          echo "================ ACTIONS RENDER TEST REPORT ================"
+          echo "project:      ${{ steps.resolve.outputs.project_dir }}"
+          echo "format:       1080x1920 @ 60fps, expected duration 8.5s"
+          echo "frames:       $FRAMES (= 8.5s x 60fps)"
+          echo "wall-clock:   ${WALL}s"
+          echo "gpu_mode:     $GPU_MODE (CPU-only runner; software expected)"
+          echo "output:       $OUT"
+          echo "output_size:  $SIZE bytes"
+          echo "duration:     ${DUR}s"
+          echo "capture_fps:  $CAPFPS fps (= frames / wall-clock)"
+          echo "--- extrapolation to a full 6,166-frame TE film ---"
+          awk -v f="$CAPFPS" 'BEGIN { printf "estimated_full_film: %.1f min\n", 6166/f/60 }'
+          echo "============================================================"
+
+      - name: Upload MP4 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.output_name }}
+          path: ${{ steps.resolve.outputs.project_dir }}/renders/${{ inputs.output_name }}
+          if-no-files-found: error
