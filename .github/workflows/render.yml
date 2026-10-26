@@ -37,6 +37,15 @@ jobs:
           # finished it in 17s. Quiet mode hid where it stuck, and a hung
           # apt would otherwise burn the whole 360-min timeout. Each attempt
           # is capped so a stall fails fast and visibly instead of hanging.
+          # Mirror switch (2026-10-26, run #10 evidence): verbose logging
+          # showed apt stalling mid-download on azure.archive.ubuntu.com
+          # (Get:4 then silence for 7+ min; ~331 KB in 3.5 min for a 98 MB
+          # fetch). GitHub's Azure-hosted runners default to that mirror,
+          # so rewrite all apt sources to the main archive before updating.
+          echo "Switching apt mirror: azure.archive.ubuntu.com -> archive.ubuntu.com"
+          sudo sed -i 's|azure\.archive\.ubuntu\.com|archive.ubuntu.com|g' /etc/apt/sources.list.d/*.sources /etc/apt/sources.list.d/*.list /etc/apt/sources.list 2>/dev/null || true
+          if [ -f /etc/apt/apt-mirrors.txt ]; then sudo sed -i 's|azure\.archive\.ubuntu\.com|archive.ubuntu.com|g' /etc/apt/apt-mirrors.txt || true; fi
+          grep -rh -E "^(URIs:|deb )" /etc/apt/sources.list.d/ /etc/apt/sources.list 2>/dev/null | head -5 || true
           UPDATED=0
           for i in 1 2 3; do
             echo "apt-get update attempt $i/3 ..."
