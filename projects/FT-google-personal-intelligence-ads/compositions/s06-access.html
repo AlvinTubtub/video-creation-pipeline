@@ -1,0 +1,28 @@
+<template>
+<link rel="stylesheet" href="assets/kit.css">
+<style>
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('assets/fonts/poppins-700.woff2') format('woff2'); }
+#root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: 'Poppins', sans-serif; }
+#s06-access-headline { position: absolute; left: 56px; top: 268px; width: 868px; font: 700 66px/1.15 'Poppins', sans-serif; color: #FFFFFF; text-shadow: 0 2px 6px rgba(0,0,0,.9), 0 0 24px rgba(0,0,0,.7); }
+</style>
+<div id="root" data-composition-id="s06-access" data-width="1080" data-height="1920">
+  <div id="s06-access-ground" class="clip" data-start="0" data-duration="5.580000000000002" data-track-index="0" style="position:absolute; inset:0; background:#0B1E3F;"></div>
+  <div id="s06-access-stage" class="clip" data-start="0" data-duration="5.580000000000002" data-track-index="1" style="position:absolute; inset:0; overflow:hidden;">
+    <div id="s06-access-drift" style="position:absolute; inset:0; will-change:transform;">
+      <img src="assets/stills/s06.webp" style="width:1080px; height:1920px; object-fit:cover; display:block;" alt="">
+    </div>
+    <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.62) 0%, rgba(0,0,0,.18) 38%, rgba(0,0,0,0) 55%, rgba(0,0,0,0) 62%, rgba(0,0,0,.55) 100%);"></div>
+  </div>
+  <div id="s06-access-headline" class="clip" data-start="0" data-duration="5.580000000000002" data-track-index="2"><div id="s06-access-pill" style="display:inline-block; padding:12px 26px; border-radius:26px; background:rgba(11,30,63,.92); font:700 30px/1.2 'Poppins', sans-serif; letter-spacing:.10em; color:#FFB066; margin-bottom:18px;">WHAT IT READS</div><div>Your emails and photos, for smarter answers.</div></div>
+</div>
+<script>
+(function () {
+  var tl = gsap.timeline({ paused: true });
+  tl.fromTo('#s06-access-headline', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: 'expo.out', force3D: true }, 0.08);
+  tl.fromTo('#s06-access-drift', { scale: 1.07 }, { scale: 1, duration: 5.58, ease: 'sine.inOut', force3D: true }, 0.08);
+  tl.fromTo('#s06-access-headline', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 5.18);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['s06-access'] = tl;
+})();
+</script>
+</template>

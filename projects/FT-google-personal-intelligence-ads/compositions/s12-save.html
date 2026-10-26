@@ -1,0 +1,24 @@
+<template>
+<link rel="stylesheet" href="assets/kit.css">
+<style>
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('assets/fonts/poppins-700.woff2') format('woff2'); }
+#root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: 'Poppins', sans-serif; }
+#s12-save-card { position: absolute; left: 56px; top: 560px; width: 968px; text-align: center; }
+</style>
+<div id="root" data-composition-id="s12-save" data-width="1080" data-height="1920">
+  <div id="s12-save-ground" class="clip" data-start="0" data-duration="4.439999999999998" data-track-index="0" style="position:absolute; inset:0; background:#0B1E3F;"></div>
+  <div id="s12-save-card" class="clip" data-start="0" data-duration="4.439999999999998" data-track-index="1">
+    <svg width="96" height="120" viewBox="0 0 96 120" style="margin-bottom:36px;"><path d="M12 6 H84 V114 L48 88 L12 114 Z" fill="#FFB066" stroke="#FFFFFF" stroke-width="4"/></svg>
+    <div style="font:700 72px/1.2 'Poppins', sans-serif; color:#FFFFFF;">Your inbox was never just an inbox. Save this before you turn the feature on.</div>
+    <div style="font:700 32px/1.2 'Poppins', sans-serif; letter-spacing:.12em; color:#FFB066; margin-top:48px;">FUTURISM TECH</div>
+  </div>
+</div>
+<script>
+(function () {
+  var tl = gsap.timeline({ paused: true });
+  tl.fromTo('#s12-save-card', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: 'expo.out', force3D: true }, 0.08);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['s12-save'] = tl;
+})();
+</script>
+</template>

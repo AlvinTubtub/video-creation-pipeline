@@ -1,0 +1,108 @@
+{
+  "_doc": "FT-google-personal-intelligence-ads: Google may use Gmail/Photos data for targeted ads (Personal Intelligence opt-in). 9:16 vertical FT film, 56.80s, NO presenter, Futurism Tech badge + burned-in captions. Duration 56.80s is WARN vs FT target 50-55s (warn band 48-58s), built at actual duration under Alvin's 2026-10-26 all-steps auto-approval; recorded, not hidden. Scene durations gap-inclusive so back-to-back starts reproduce spoken paragraph starts.",
+  "audio": [
+    {
+      "dur": 56.8,
+      "id": "vo",
+      "src": "assets/audio/vo-master.wav",
+      "track": 9,
+      "volume": 1
+    }
+  ],
+  "beats_per_bar": 1,
+  "bgm": null,
+  "bpm": 60,
+  "cues": [],
+  "duration_s": 56.8,
+  "fps": 60,
+  "ground": "#0B1E3F",
+  "gsap": "3.14.2",
+  "height": 1920,
+  "hyperframes": "0.8.117",
+  "layout": {
+    "caption_band": {
+      "h": 330,
+      "w": 856,
+      "x": 64,
+      "y": 1180
+    },
+    "presenter_zone": null,
+    "stage": {
+      "h": 1330,
+      "w": 984,
+      "x": 48,
+      "y": 210
+    },
+    "headline_band": {
+      "h": 300,
+      "w": 868,
+      "x": 56,
+      "y": 230
+    }
+  },
+  "name": "google-gmail-photos-ads",
+  "overlays": [
+    {
+      "id": "m-brand",
+      "track": 2,
+      "z": 5
+    },
+    {
+      "id": "m-caption",
+      "track": 3,
+      "z": 6
+    }
+  ],
+  "profile": "FT",
+  "project_id": "FT-google-personal-intelligence-ads",
+  "scenes": [
+    [
+      "s01-hook",
+      4.04
+    ],
+    [
+      "s02-promise",
+      6.06
+    ],
+    [
+      "s03-exception",
+      4.16
+    ],
+    [
+      "s04-policy",
+      8.02
+    ],
+    [
+      "s05-loophole",
+      2.92
+    ],
+    [
+      "s06-access",
+      5.58
+    ],
+    [
+      "s07-ads",
+      4.22
+    ],
+    [
+      "s08-limits",
+      4.48
+    ],
+    [
+      "s09-sensitive",
+      3.86
+    ],
+    [
+      "s10-catch",
+      4.58
+    ],
+    [
+      "s11-tradeoff",
+      4.44
+    ],
+    [
+      "s12-save",
+      4.44
+    ]
+  ]
+}

@@ -1,0 +1,21 @@
+<!-- Futurism Tech badge pill, visible 0-56.80s through the end card. -->
+<template>
+<link rel="stylesheet" href="assets/kit.css">
+<style>
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('assets/fonts/poppins-700.woff2') format('woff2'); }
+#root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: 'Poppins', sans-serif; }
+</style>
+<div id="root" data-composition-id="m-brand" data-width="1080" data-height="1920">
+  <div id="m-brand-layer" class="clip" data-start="0" data-duration="56.80" data-track-index="1" style="position:absolute; inset:0;">
+    <div id="m-brand-pill" style="position:absolute; left:56px; top:180px; padding:14px 28px; border-radius:30px; background:rgba(11,30,63,.92); font:700 30px/1.2 'Poppins', sans-serif; letter-spacing:.12em; color:#FFFFFF;">FUTURISM TECH</div>
+  </div>
+</div>
+<script>
+(function () {
+  var tl = gsap.timeline({ paused: true });
+  tl.fromTo('#m-brand-pill', { opacity: 0 }, { opacity: 1, duration: 0.4, ease: 'power2.out' }, 0.08);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['m-brand'] = tl;
+})();
+</script>
+</template>
