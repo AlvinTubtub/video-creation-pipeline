@@ -1,0 +1,151 @@
+{
+ "_doc": "TE-how-dns-works: How the internet finds any website. 9:16 vertical TE film, 109.04s, Carla presenter + Tech Explanasyon badge + burned-in caption overlay. Layout law locked Phase 1.5 (2026-10-24); headlines at y268 (badge pill y168-252). Intake original preserved at 03-timing/intake-report.md.",
+ "audio": [
+  {
+   "dur": 109.04,
+   "id": "vo",
+   "src": "assets/audio/vo-master.wav",
+   "track": 9,
+   "volume": 1
+  }
+ ],
+ "beats_per_bar": 1,
+ "bgm": null,
+ "bpm": 60,
+ "cues": [],
+ "duration_s": 109.04,
+ "fps": 60,
+ "ground": "#F6F2EA",
+ "gsap": "3.14.2",
+ "height": 1920,
+ "hyperframes": "0.8.117",
+ "layout": {
+  "caption_band": {
+   "h": 240,
+   "w": 448,
+   "x": 486,
+   "y": 1280
+  },
+  "presenter_zone": {
+   "feet_y": 1540,
+   "h": 335,
+   "w": 361,
+   "x": 24,
+   "y": 1205
+  },
+  "stage": {
+   "h": 710,
+   "w": 900,
+   "x": 60,
+   "y": 470
+  }
+ },
+ "name": "how-dns-works",
+ "overlays": [
+  {
+   "id": "m-kape",
+   "track": 2,
+   "z": 5
+  },
+  {
+   "id": "m-brand",
+   "track": 3,
+   "z": 6
+  },
+  {
+   "id": "m-caption",
+   "track": 4,
+   "z": 7
+  }
+ ],
+ "profile": "TE",
+ "project_id": "TE-how-dns-works",
+ "scene_timings": [
+  {
+   "end": 11.36,
+   "id": "s01-hook",
+   "start": 0.0
+  },
+  {
+   "end": 27.22,
+   "id": "s02-name-number",
+   "start": 11.36
+  },
+  {
+   "end": 43.6,
+   "id": "s03-resolver",
+   "start": 27.22
+  },
+  {
+   "end": 63.18,
+   "id": "s04-chain",
+   "start": 43.6
+  },
+  {
+   "end": 75.62,
+   "id": "s05-connect",
+   "start": 63.18
+  },
+  {
+   "end": 87.66,
+   "id": "s06-public-resolver",
+   "start": 75.62
+  },
+  {
+   "end": 96.52,
+   "id": "s07-dns-down",
+   "start": 87.66
+  },
+  {
+   "end": 106.02,
+   "id": "s08-closing",
+   "start": 96.52
+  },
+  {
+   "end": 109.04,
+   "id": "s09-signoff",
+   "start": 106.02
+  }
+ ],
+ "scenes": [
+  [
+   "s01-hook",
+   11.36
+  ],
+  [
+   "s02-name-number",
+   15.86
+  ],
+  [
+   "s03-resolver",
+   16.38
+  ],
+  [
+   "s04-chain",
+   19.58
+  ],
+  [
+   "s05-connect",
+   12.44
+  ],
+  [
+   "s06-public-resolver",
+   12.04
+  ],
+  [
+   "s07-dns-down",
+   8.86
+  ],
+  [
+   "s08-closing",
+   9.5
+  ],
+  [
+   "s09-signoff",
+   3.02
+  ]
+ ],
+ "sfx": {},
+ "stage": "GATES-PASSED",
+ "width": 1080
+}

@@ -1,0 +1,49 @@
+<template>
+<link rel="stylesheet" href="assets/kit.css">
+<style>
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('assets/fonts/poppins-500.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('assets/fonts/poppins-700.woff2') format('woff2'); }
+#root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: 'Poppins', sans-serif; }
+.s02-name-number-layer { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+#s02-name-number-headline { position: absolute; left: 60px; top: 268px; width: 880px; font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F; }
+#s02-name-number-diagram { position: absolute; left: 90px; top: 470px; width: 900px; height: 710px; }
+</style>
+<div id="root" data-composition-id="s02-name-number" data-width="1080" data-height="1920">
+  <div id="s02-name-number-ground" class="clip kit-ground" data-start="0" data-duration="15.86" data-track-index="0"></div>
+  <div id="s02-name-number-stage" class="clip" data-start="0" data-duration="15.86" data-track-index="1" style="position:absolute; inset:0; perspective:1866px; perspective-origin:50% 50%;">
+    <div id="s02-name-number-drift" class="s02-name-number-layer">
+      <div class="kit-floor"></div>
+      <div id="s02-name-number-diagram">
+        <svg width="900" height="710" viewBox="0 0 900 710">
+<g id="s02-house"><rect x="120" y="220" width="220" height="200" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><path d="M 100 230 L 230 120 L 360 230 Z" fill="#0F9F8F" stroke="#0B1E3F" stroke-width="4" stroke-linejoin="round"/><rect x="205" y="330" width="50" height="90" fill="#0B1E3F"/></g>
+<g id="s02-plate"><rect x="150" y="250" width="110" height="58" rx="29" fill="#FF7A1A"/><text x="205" y="289" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">42</text></g>
+<g id="s02-sign"><rect x="500" y="210" width="320" height="58" rx="29" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="660" y="249" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">FACEBOOK.COM</text></g>
+<g id="s02-arrow"><path d="M 490 330 L 380 330" fill="none" stroke="#0F9F8F" stroke-width="6"/><path d="M 380 330 L 398 314 L 398 346 Z" fill="#0F9F8F"/></g>
+<g id="s02-ip"><rect x="120" y="470" width="240" height="58" rx="29" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="240" y="509" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">IP ADDRESS</text></g>
+<g id="s02-n2n"><rect x="290" y="580" width="320" height="58" rx="29" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="450" y="619" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">NAME TO NUMBER</text></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div id="s02-name-number-headline" class="clip" data-start="0" data-duration="15.86" data-track-index="2">Websites live at numbers. We use names.</div>
+  <div id="s02-name-number-grain" class="clip kit-grain" data-start="0" data-duration="15.86" data-track-index="9"></div>
+</div>
+<script>
+(function () {
+  var tl = gsap.timeline({ paused: true });
+  tl.fromTo('#s02-name-number-headline', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: 'expo.out', force3D: true }, 0.08);
+  tl.fromTo('#s02-name-number-drift', { scale: 1 }, { scale: 1.015, duration: 7.93, ease: 'sine.inOut', force3D: true }, 0.08);
+  tl.fromTo('#s02-name-number-drift', { scale: 1.015 }, { scale: 1, duration: 7.93, ease: 'sine.inOut', force3D: true, immediateRender: false }, 8.01);
+  tl.fromTo('#s02-house', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.2);
+  tl.fromTo('#s02-plate', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.7);
+  tl.fromTo('#s02-sign', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.2);
+  tl.fromTo('#s02-arrow', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.7);
+  tl.fromTo('#s02-ip', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 2.2);
+  tl.fromTo('#s02-n2n', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 2.7);
+  tl.fromTo('#s02-name-number-diagram', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 15.36);
+  tl.fromTo('#s02-name-number-headline', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 15.36);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['s02-name-number'] = tl;
+})();
+</script>
+</template>

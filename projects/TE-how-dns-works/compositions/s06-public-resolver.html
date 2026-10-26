@@ -1,0 +1,47 @@
+<template>
+<link rel="stylesheet" href="assets/kit.css">
+<style>
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('assets/fonts/poppins-500.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('assets/fonts/poppins-700.woff2') format('woff2'); }
+#root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: 'Poppins', sans-serif; }
+.s06-public-resolver-layer { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+#s06-public-resolver-headline { position: absolute; left: 60px; top: 268px; width: 880px; font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F; }
+#s06-public-resolver-diagram { position: absolute; left: 90px; top: 470px; width: 900px; height: 710px; }
+</style>
+<div id="root" data-composition-id="s06-public-resolver" data-width="1080" data-height="1920">
+  <div id="s06-public-resolver-ground" class="clip kit-ground" data-start="0" data-duration="12.04" data-track-index="0"></div>
+  <div id="s06-public-resolver-stage" class="clip" data-start="0" data-duration="12.04" data-track-index="1" style="position:absolute; inset:0; perspective:1866px; perspective-origin:50% 50%;">
+    <div id="s06-public-resolver-drift" class="s06-public-resolver-layer">
+      <div class="kit-floor"></div>
+      <div id="s06-public-resolver-diagram">
+        <svg width="900" height="710" viewBox="0 0 900 710">
+<g id="s06-provider" opacity="0.45"><rect x="100" y="200" width="220" height="240" rx="20" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><path d="M 210 200 L 170 130 L 250 130 Z" fill="#8B93A7" stroke="#0B1E3F" stroke-width="4" stroke-linejoin="round"/><text x="210" y="320" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">PROVIDER</text></g>
+<g id="s06-switch"><rect x="380" y="290" width="140" height="70" rx="35" fill="#0F9F8F"/><circle cx="485" cy="325" r="28" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/></g>
+<g id="s06-public"><rect x="580" y="200" width="220" height="240" rx="20" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="690" y="300" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="44" fill="#0B1E3F">8.8.8.8</text><text x="690" y="360" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">PUBLIC</text></g>
+<g id="s06-resolverlabel"><rect x="280" y="500" width="340" height="58" rx="29" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="450" y="539" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">PUBLIC RESOLVER</text></g>
+<g id="s06-faster"><rect x="270" y="600" width="360" height="58" rx="29" fill="#FF7A1A"/><text x="450" y="639" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">SOMETIMES FASTER</text></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div id="s06-public-resolver-headline" class="clip" data-start="0" data-duration="12.04" data-track-index="2">You can pick a public resolver</div>
+  <div id="s06-public-resolver-grain" class="clip kit-grain" data-start="0" data-duration="12.04" data-track-index="9"></div>
+</div>
+<script>
+(function () {
+  var tl = gsap.timeline({ paused: true });
+  tl.fromTo('#s06-public-resolver-headline', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: 'expo.out', force3D: true }, 0.08);
+  tl.fromTo('#s06-public-resolver-drift', { scale: 1 }, { scale: 1.015, duration: 6.02, ease: 'sine.inOut', force3D: true }, 0.08);
+  tl.fromTo('#s06-public-resolver-drift', { scale: 1.015 }, { scale: 1, duration: 6.02, ease: 'sine.inOut', force3D: true, immediateRender: false }, 6.10);
+  tl.fromTo('#s06-provider', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 0.45, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.2);
+  tl.fromTo('#s06-switch', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.7);
+  tl.fromTo('#s06-public', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.2);
+  tl.fromTo('#s06-resolverlabel', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.7);
+  tl.fromTo('#s06-faster', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 2.2);
+  tl.fromTo('#s06-public-resolver-diagram', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 11.54);
+  tl.fromTo('#s06-public-resolver-headline', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 11.54);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['s06-public-resolver'] = tl;
+})();
+</script>
+</template>

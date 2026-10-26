@@ -1,0 +1,47 @@
+<template>
+<link rel="stylesheet" href="assets/kit.css">
+<style>
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('assets/fonts/poppins-500.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('assets/fonts/poppins-700.woff2') format('woff2'); }
+#root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: 'Poppins', sans-serif; }
+.s01-hook-layer { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+#s01-hook-headline { position: absolute; left: 60px; top: 268px; width: 880px; font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F; }
+#s01-hook-diagram { position: absolute; left: 90px; top: 540px; width: 900px; height: 640px; }
+</style>
+<div id="root" data-composition-id="s01-hook" data-width="1080" data-height="1920">
+  <div id="s01-hook-ground" class="clip kit-ground" data-start="0" data-duration="11.36" data-track-index="0"></div>
+  <div id="s01-hook-stage" class="clip" data-start="0" data-duration="11.36" data-track-index="1" style="position:absolute; inset:0; perspective:1866px; perspective-origin:50% 50%;">
+    <div id="s01-hook-drift" class="s01-hook-layer">
+      <div class="kit-floor"></div>
+      <div id="s01-hook-diagram">
+        <svg width="900" height="640" viewBox="0 0 900 640">
+<g id="s01-typed"><rect x="295" y="30" width="310" height="58" rx="29" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="450" y="69" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">FACEBOOK.COM</text></g>
+<g id="s01-phone"><rect x="365" y="110" width="170" height="320" rx="38" fill="#0B1E3F"/><rect x="387" y="134" width="126" height="272" rx="24" fill="#FFFFFF"/><rect x="420" y="384" width="60" height="10" rx="5" fill="#0B1E3F"/></g>
+<g id="s01-arrow"><path d="M 540 260 L 600 260" fill="none" stroke="#0F9F8F" stroke-width="6"/><path d="M 600 260 L 582 244 L 582 276 Z" fill="#0F9F8F"/></g>
+<g id="s01-site"><rect x="610" y="170" width="230" height="180" rx="20" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><rect x="610" y="170" width="230" height="36" rx="18" fill="#0F9F8F"/><text x="725" y="290" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">WEBSITE</text></g>
+<g id="s01-book"><path d="M 250 480 Q 450 432 650 480 L 650 580 Q 450 532 250 580 Z" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><path d="M 450 456 L 450 556" stroke="#0B1E3F" stroke-width="4"/><text x="450" y="540" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="44" fill="#0B1E3F">DNS</text></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div id="s01-hook-headline" class="clip" data-start="0" data-duration="11.36" data-track-index="2"><div id="s01-hook-kicker" style="font: 700 34px/1.2 'Poppins', sans-serif; letter-spacing: .14em; color: #0F9F8F; margin-bottom: 14px;">TECH EXPLANASYON</div><div style="font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F;">How does typing one word take you to a website in less than a second?</div></div>
+  <div id="s01-hook-grain" class="clip kit-grain" data-start="0" data-duration="11.36" data-track-index="9"></div>
+</div>
+<script>
+(function () {
+  var tl = gsap.timeline({ paused: true });
+  tl.fromTo('#s01-hook-headline', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: 'expo.out', force3D: true }, 0.08);
+  tl.fromTo('#s01-hook-drift', { scale: 1 }, { scale: 1.015, duration: 5.68, ease: 'sine.inOut', force3D: true }, 0.08);
+  tl.fromTo('#s01-hook-drift', { scale: 1.015 }, { scale: 1, duration: 5.68, ease: 'sine.inOut', force3D: true, immediateRender: false }, 5.76);
+  tl.fromTo('#s01-phone', { scale: 0, transformOrigin: '450px 320px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.2);
+  tl.fromTo('#s01-typed', { scale: 0, transformOrigin: '450px 320px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.7);
+  tl.fromTo('#s01-arrow', { scale: 0, transformOrigin: '450px 320px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.2);
+  tl.fromTo('#s01-site', { scale: 0, transformOrigin: '450px 320px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.7);
+  tl.fromTo('#s01-book', { scale: 0, transformOrigin: '450px 320px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 2.2);
+    tl.fromTo('#s01-hook-diagram', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 10.86);
+  tl.fromTo('#s01-hook-headline', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 10.86);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['s01-hook'] = tl;
+})();
+</script>
+</template>

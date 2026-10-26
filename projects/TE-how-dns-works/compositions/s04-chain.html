@@ -1,0 +1,53 @@
+<template>
+<link rel="stylesheet" href="assets/kit.css">
+<style>
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('assets/fonts/poppins-500.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('assets/fonts/poppins-700.woff2') format('woff2'); }
+#root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: 'Poppins', sans-serif; }
+.s04-chain-layer { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+#s04-chain-headline { position: absolute; left: 60px; top: 268px; width: 880px; font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F; }
+#s04-chain-diagram { position: absolute; left: 90px; top: 470px; width: 900px; height: 710px; }
+</style>
+<div id="root" data-composition-id="s04-chain" data-width="1080" data-height="1920">
+  <div id="s04-chain-ground" class="clip kit-ground" data-start="0" data-duration="19.58" data-track-index="0"></div>
+  <div id="s04-chain-stage" class="clip" data-start="0" data-duration="19.58" data-track-index="1" style="position:absolute; inset:0; perspective:1866px; perspective-origin:50% 50%;">
+    <div id="s04-chain-drift" class="s04-chain-layer">
+      <div class="kit-floor"></div>
+      <div id="s04-chain-diagram">
+        <svg width="900" height="710" viewBox="0 0 900 710">
+<g id="s04-rung1"><rect x="300" y="60" width="300" height="80" rx="20" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="450" y="110" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">ROOT</text></g>
+<g id="s04-arrow1"><path d="M 450 150 L 450 190" stroke="#0F9F8F" stroke-width="6"/><path d="M 450 190 L 434 174 L 466 174 Z" fill="#0F9F8F"/></g>
+<g id="s04-rung2"><rect x="300" y="200" width="300" height="80" rx="20" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="450" y="250" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">.COM</text></g>
+<g id="s04-arrow2"><path d="M 450 290 L 450 330" stroke="#0F9F8F" stroke-width="6"/><path d="M 450 330 L 434 314 L 466 314 Z" fill="#0F9F8F"/></g>
+<g id="s04-rung3"><rect x="285" y="340" width="330" height="80" rx="20" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="450" y="390" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">DOMAIN OWNER</text></g>
+<g id="s04-arrow3"><path d="M 450 430 L 450 470" stroke="#0F9F8F" stroke-width="6"/><path d="M 450 470 L 434 454 L 466 454 Z" fill="#0F9F8F"/></g>
+<g id="s04-rung4"><rect x="275" y="480" width="350" height="80" rx="20" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="450" y="530" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">AUTHORITATIVE</text></g>
+<g id="s04-ip"><rect x="330" y="600" width="240" height="58" rx="29" fill="#FF7A1A"/><text x="450" y="639" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">IP ADDRESS</text></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div id="s04-chain-headline" class="clip" data-start="0" data-duration="19.58" data-track-index="2">Not cached? The question climbs upward</div>
+  <div id="s04-chain-grain" class="clip kit-grain" data-start="0" data-duration="19.58" data-track-index="9"></div>
+</div>
+<script>
+(function () {
+  var tl = gsap.timeline({ paused: true });
+  tl.fromTo('#s04-chain-headline', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: 'expo.out', force3D: true }, 0.08);
+  tl.fromTo('#s04-chain-drift', { scale: 1 }, { scale: 1.015, duration: 9.79, ease: 'sine.inOut', force3D: true }, 0.08);
+  tl.fromTo('#s04-chain-drift', { scale: 1.015 }, { scale: 1, duration: 9.79, ease: 'sine.inOut', force3D: true, immediateRender: false }, 9.87);
+  tl.fromTo('#s04-rung1', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.2);
+  tl.fromTo('#s04-arrow1', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.7);
+  tl.fromTo('#s04-rung2', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.2);
+  tl.fromTo('#s04-arrow2', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.7);
+  tl.fromTo('#s04-rung3', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 2.2);
+  tl.fromTo('#s04-arrow3', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 2.7);
+  tl.fromTo('#s04-rung4', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 3.2);
+  tl.fromTo('#s04-ip', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 3.7);
+  tl.fromTo('#s04-chain-diagram', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 19.08);
+  tl.fromTo('#s04-chain-headline', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 19.08);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['s04-chain'] = tl;
+})();
+</script>
+</template>

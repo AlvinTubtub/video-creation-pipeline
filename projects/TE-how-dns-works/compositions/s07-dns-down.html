@@ -1,0 +1,49 @@
+<template>
+<link rel="stylesheet" href="assets/kit.css">
+<style>
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('assets/fonts/poppins-500.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('assets/fonts/poppins-700.woff2') format('woff2'); }
+#root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: 'Poppins', sans-serif; }
+.s07-dns-down-layer { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+#s07-dns-down-headline { position: absolute; left: 60px; top: 268px; width: 880px; font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F; }
+#s07-dns-down-diagram { position: absolute; left: 90px; top: 470px; width: 900px; height: 710px; }
+</style>
+<div id="root" data-composition-id="s07-dns-down" data-width="1080" data-height="1920">
+  <div id="s07-dns-down-ground" class="clip kit-ground" data-start="0" data-duration="8.86" data-track-index="0"></div>
+  <div id="s07-dns-down-stage" class="clip" data-start="0" data-duration="8.86" data-track-index="1" style="position:absolute; inset:0; perspective:1866px; perspective-origin:50% 50%;">
+    <div id="s07-dns-down-drift" class="s07-dns-down-layer">
+      <div class="kit-floor"></div>
+      <div id="s07-dns-down-diagram">
+        <svg width="900" height="710" viewBox="0 0 900 710">
+<g id="s07-server1"><rect x="120" y="200" width="220" height="200" rx="20" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><circle cx="230" cy="280" r="16" fill="#0F9F8F"/><text x="230" y="360" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">SERVER</text></g>
+<g id="s07-server2"><rect x="560" y="200" width="220" height="200" rx="20" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><circle cx="670" cy="280" r="16" fill="#0F9F8F"/><text x="670" y="360" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">SERVER</text></g>
+<g id="s07-lookup"><rect x="250" y="60" width="400" height="80" rx="20" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="450" y="110" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">NAME LOOKUP</text></g>
+<g id="s07-x"><path d="M 380 60 L 520 140 M 520 60 L 380 140" stroke="#E5484D" stroke-width="10" stroke-linecap="round"/></g>
+<g id="s07-alive"><rect x="280" y="470" width="340" height="58" rx="29" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="450" y="509" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">SERVERS ALIVE</text></g>
+<g id="s07-down"><rect x="260" y="570" width="380" height="58" rx="29" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="450" y="609" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">NAME LOOKUP DOWN</text></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div id="s07-dns-down-headline" class="clip" data-start="0" data-duration="8.86" data-track-index="2">DNS down does not mean internet down</div>
+  <div id="s07-dns-down-grain" class="clip kit-grain" data-start="0" data-duration="8.86" data-track-index="9"></div>
+</div>
+<script>
+(function () {
+  var tl = gsap.timeline({ paused: true });
+  tl.fromTo('#s07-dns-down-headline', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: 'expo.out', force3D: true }, 0.08);
+  tl.fromTo('#s07-dns-down-drift', { scale: 1 }, { scale: 1.015, duration: 4.43, ease: 'sine.inOut', force3D: true }, 0.08);
+  tl.fromTo('#s07-dns-down-drift', { scale: 1.015 }, { scale: 1, duration: 4.43, ease: 'sine.inOut', force3D: true, immediateRender: false }, 4.51);
+  tl.fromTo('#s07-server1', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.2);
+  tl.fromTo('#s07-server2', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.7);
+  tl.fromTo('#s07-lookup', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.2);
+  tl.fromTo('#s07-x', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.7);
+  tl.fromTo('#s07-alive', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 2.2);
+  tl.fromTo('#s07-down', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 2.7);
+  tl.fromTo('#s07-dns-down-diagram', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 8.36);
+  tl.fromTo('#s07-dns-down-headline', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 8.36);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['s07-dns-down'] = tl;
+})();
+</script>
+</template>
