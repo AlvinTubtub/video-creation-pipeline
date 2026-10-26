@@ -1,0 +1,45 @@
+<template>
+<link rel="stylesheet" href="assets/kit.css">
+<style>
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('assets/fonts/poppins-500.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('assets/fonts/poppins-700.woff2') format('woff2'); }
+#root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: 'Poppins', sans-serif; }
+.s05-optimized-charging-layer { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+#s05-optimized-charging-headline { position: absolute; left: 60px; top: 268px; width: 880px; font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F; }
+#s05-optimized-charging-diagram { position: absolute; left: 90px; top: 470px; width: 900px; height: 710px; }
+</style>
+<div id="root" data-composition-id="s05-optimized-charging" data-width="1080" data-height="1920">
+  <div id="s05-optimized-charging-ground" class="clip kit-ground" data-start="0" data-duration="9.12" data-track-index="0"></div>
+  <div id="s05-optimized-charging-stage" class="clip" data-start="0" data-duration="9.12" data-track-index="1" style="position:absolute; inset:0; perspective:1866px; perspective-origin:50% 50%;">
+    <div id="s05-optimized-charging-drift" class="s05-optimized-charging-layer">
+      <div class="kit-floor"></div>
+      <div id="s05-optimized-charging-diagram">
+        <svg width="900" height="710" viewBox="0 0 900 710">
+<g id="s05-moon"><circle cx="180" cy="150" r="55" fill="#0F9F8F"/><circle cx="200" cy="135" r="48" fill="#F6F2EA"/></g>
+<g id="s05-chart"><path d="M 120 420 L 120 180 L 780 180" fill="none" stroke="#0B1E3F" stroke-width="4"/><path d="M 150 360 L 480 360 L 480 220 L 750 220" fill="none" stroke="#0F9F8F" stroke-width="8" stroke-linecap="round"/><circle cx="480" cy="360" r="14" fill="#0F9F8F"/><circle cx="750" cy="220" r="14" fill="#FF7A1A"/></g>
+<g id="s05-80"><rect x="120" y="460" width="300" height="58" rx="29" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="270" y="499" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">HOLDS AT 80%</text></g>
+<g id="s05-wake"><rect x="470" y="460" width="330" height="58" rx="29" fill="#FF7A1A"/><text x="635" y="499" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">100% BEFORE YOU WAKE</text></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div id="s05-optimized-charging-headline" class="clip" data-start="0" data-duration="9.12" data-track-index="2">Optimized charging waits for morning.</div>
+  <div id="s05-optimized-charging-grain" class="clip kit-grain" data-start="0" data-duration="9.12" data-track-index="9"></div>
+</div>
+<script>
+(function () {
+  var tl = gsap.timeline({ paused: true });
+  tl.fromTo('#s05-optimized-charging-headline', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: 'expo.out', force3D: true }, 0.08);
+  tl.fromTo('#s05-optimized-charging-drift', { scale: 1 }, { scale: 1.015, duration: 4.56, ease: 'sine.inOut', force3D: true }, 0.08);
+  tl.fromTo('#s05-optimized-charging-drift', { scale: 1.015 }, { scale: 1, duration: 4.56, ease: 'sine.inOut', force3D: true, immediateRender: false }, 4.64);
+  tl.fromTo('#s05-moon', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.2);
+  tl.fromTo('#s05-chart', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.7);
+  tl.fromTo('#s05-80', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.2);
+  tl.fromTo('#s05-wake', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.7);
+  tl.fromTo('#s05-optimized-charging-diagram', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 8.62);
+  tl.fromTo('#s05-optimized-charging-headline', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 8.62);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['s05-optimized-charging'] = tl;
+})();
+</script>
+</template>

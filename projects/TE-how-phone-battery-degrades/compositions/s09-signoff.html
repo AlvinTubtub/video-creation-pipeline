@@ -1,0 +1,40 @@
+<template>
+<link rel="stylesheet" href="assets/kit.css">
+<style>
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('assets/fonts/poppins-500.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('assets/fonts/poppins-700.woff2') format('woff2'); }
+#root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: 'Poppins', sans-serif; }
+.s09-signoff-layer { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+#s09-signoff-headline { position: absolute; left: 60px; top: 268px; width: 880px; font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F; }
+#s09-signoff-diagram { position: absolute; left: 90px; top: 470px; width: 900px; height: 710px; }
+</style>
+<div id="root" data-composition-id="s09-signoff" data-width="1080" data-height="1920">
+  <div id="s09-signoff-ground" class="clip kit-ground" data-start="0" data-duration="2.78" data-track-index="0"></div>
+  <div id="s09-signoff-stage" class="clip" data-start="0" data-duration="2.78" data-track-index="1" style="position:absolute; inset:0; perspective:1866px; perspective-origin:50% 50%;">
+    <div id="s09-signoff-drift" class="s09-signoff-layer">
+      <div class="kit-floor"></div>
+      <div id="s09-signoff-diagram">
+        <svg width="900" height="710" viewBox="0 0 900 710">
+<g id="s09-badge"><rect x="180" y="180" width="540" height="110" rx="55" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="450" y="235" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="36" fill="#0B1E3F">TECH EXPLANASYON</text></g>
+<g id="s09-seeyah"><text x="450" y="380" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="64" fill="#0F9F8F">SEE YAH!</text></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div id="s09-signoff-headline" class="clip" data-start="0" data-duration="2.78" data-track-index="2">Follow me for more tech explained. See yah!</div>
+  <div id="s09-signoff-grain" class="clip kit-grain" data-start="0" data-duration="2.78" data-track-index="9"></div>
+</div>
+<script>
+(function () {
+  var tl = gsap.timeline({ paused: true });
+  tl.fromTo('#s09-signoff-headline', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: 'expo.out', force3D: true }, 0.08);
+  tl.fromTo('#s09-signoff-drift', { scale: 1 }, { scale: 1.015, duration: 1.39, ease: 'sine.inOut', force3D: true }, 0.08);
+  tl.fromTo('#s09-signoff-drift', { scale: 1.015 }, { scale: 1, duration: 1.39, ease: 'sine.inOut', force3D: true, immediateRender: false }, 1.47);
+  tl.fromTo('#s09-badge', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.2);
+  tl.fromTo('#s09-seeyah', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.7);
+
+  window.__timelines = window.__timelines || {};
+  window.__timelines['s09-signoff'] = tl;
+})();
+</script>
+</template>

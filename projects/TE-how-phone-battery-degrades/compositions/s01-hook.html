@@ -1,0 +1,47 @@
+<template>
+<link rel="stylesheet" href="assets/kit.css">
+<style>
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('assets/fonts/poppins-500.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('assets/fonts/poppins-700.woff2') format('woff2'); }
+#root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: 'Poppins', sans-serif; }
+.s01-hook-layer { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+#s01-hook-headline { position: absolute; left: 60px; top: 268px; width: 880px; font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F; }
+#s01-hook-diagram { position: absolute; left: 90px; top: 540px; width: 900px; height: 640px; }
+</style>
+<div id="root" data-composition-id="s01-hook" data-width="1080" data-height="1920">
+  <div id="s01-hook-ground" class="clip kit-ground" data-start="0" data-duration="10.40" data-track-index="0"></div>
+  <div id="s01-hook-stage" class="clip" data-start="0" data-duration="10.40" data-track-index="1" style="position:absolute; inset:0; perspective:1866px; perspective-origin:50% 50%;">
+    <div id="s01-hook-drift" class="s01-hook-layer">
+      <div class="kit-floor"></div>
+      <div id="s01-hook-diagram">
+        <svg width="900" height="640" viewBox="0 0 900 640">
+<g id="s01-phone"><rect x="330" y="40" width="200" height="400" rx="40" fill="#0B1E3F"/><rect x="354" y="66" width="152" height="348" rx="28" fill="#FFFFFF"/><rect x="410" y="392" width="40" height="8" rx="4" fill="#0B1E3F"/></g>
+<g id="s01-batt"><rect x="384" y="110" width="92" height="180" rx="16" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><rect x="412" y="96" width="36" height="16" rx="6" fill="#0B1E3F"/><rect x="396" y="206" width="68" height="72" rx="10" fill="#E5484D"/><text x="430" y="330" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">LOW</text></g>
+<g id="s01-years"><rect x="290" y="470" width="320" height="58" rx="29" fill="#FF7A1A"/><text x="450" y="509" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">2 YEARS LATER</text></g>
+<g id="s01-new"><rect x="600" y="120" width="220" height="58" rx="29" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="710" y="159" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">NEW: FULL</text></g>
+<g id="s01-old"><rect x="600" y="200" width="220" height="58" rx="29" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="710" y="239" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">OLD: WEAK</text></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div id="s01-hook-headline" class="clip" data-start="0" data-duration="10.40" data-track-index="2"><div id="s01-hook-kicker" style="font: 700 34px/1.2 'Poppins', sans-serif; letter-spacing: .14em; color: #0F9F8F; margin-bottom: 14px;">TECH EXPLANASYON</div><div style="font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F;">Why does a two-year-old phone die faster than when it was new?</div></div>
+  <div id="s01-hook-grain" class="clip kit-grain" data-start="0" data-duration="10.40" data-track-index="9"></div>
+</div>
+<script>
+(function () {
+  var tl = gsap.timeline({ paused: true });
+  tl.fromTo('#s01-hook-headline', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: 'expo.out', force3D: true }, 0.08);
+  tl.fromTo('#s01-hook-drift', { scale: 1 }, { scale: 1.015, duration: 5.2, ease: 'sine.inOut', force3D: true }, 0.08);
+  tl.fromTo('#s01-hook-drift', { scale: 1.015 }, { scale: 1, duration: 5.2, ease: 'sine.inOut', force3D: true, immediateRender: false }, 5.28);
+  tl.fromTo('#s01-phone', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.2);
+  tl.fromTo('#s01-batt', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.7);
+  tl.fromTo('#s01-years', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.2);
+  tl.fromTo('#s01-new', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.7);
+  tl.fromTo('#s01-old', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 2.2);
+  tl.fromTo('#s01-hook-diagram', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 9.90);
+  tl.fromTo('#s01-hook-headline', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 9.90);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['s01-hook'] = tl;
+})();
+</script>
+</template>

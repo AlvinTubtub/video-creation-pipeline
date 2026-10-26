@@ -1,0 +1,49 @@
+<template>
+<link rel="stylesheet" href="assets/kit.css">
+<style>
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('assets/fonts/poppins-500.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('assets/fonts/poppins-700.woff2') format('woff2'); }
+#root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: 'Poppins', sans-serif; }
+.s02-lithium-ion-layer { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+#s02-lithium-ion-headline { position: absolute; left: 60px; top: 268px; width: 880px; font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F; }
+#s02-lithium-ion-diagram { position: absolute; left: 90px; top: 470px; width: 900px; height: 710px; }
+</style>
+<div id="root" data-composition-id="s02-lithium-ion" data-width="1080" data-height="1920">
+  <div id="s02-lithium-ion-ground" class="clip kit-ground" data-start="0" data-duration="15.68" data-track-index="0"></div>
+  <div id="s02-lithium-ion-stage" class="clip" data-start="0" data-duration="15.68" data-track-index="1" style="position:absolute; inset:0; perspective:1866px; perspective-origin:50% 50%;">
+    <div id="s02-lithium-ion-drift" class="s02-lithium-ion-layer">
+      <div class="kit-floor"></div>
+      <div id="s02-lithium-ion-diagram">
+        <svg width="900" height="710" viewBox="0 0 900 710">
+<g id="s02-sidea"><rect x="80" y="120" width="200" height="300" rx="20" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="180" y="250" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="34" fill="#0B1E3F">SIDE A</text></g>
+<g id="s02-sideb"><rect x="620" y="120" width="200" height="300" rx="20" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="720" y="250" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="34" fill="#0B1E3F">SIDE B</text></g>
+<g id="s02-ions"><circle cx="450" cy="210" r="26" fill="#0F9F8F"/><text x="450" y="220" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#FFFFFF">+</text><circle cx="450" cy="300" r="26" fill="#0F9F8F"/><text x="450" y="310" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#FFFFFF">+</text></g>
+<g id="s02-charge"><path d="M 300 230 L 590 230" fill="none" stroke="#0F9F8F" stroke-width="6"/><path d="M 590 230 L 568 212 L 568 248 Z" fill="#0F9F8F"/><text x="445" y="168" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="28" fill="#0B1E3F">CHARGE</text></g>
+<g id="s02-use"><path d="M 590 340 L 300 340" fill="none" stroke="#FF7A1A" stroke-width="6"/><path d="M 300 340 L 322 322 L 322 358 Z" fill="#FF7A1A"/><text x="445" y="385" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="28" fill="#0B1E3F">USE</text></g>
+<g id="s02-cycle"><rect x="240" y="500" width="420" height="58" rx="29" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="450" y="539" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">1 CYCLE = 1 FULL TRIP</text></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div id="s02-lithium-ion-headline" class="clip" data-start="0" data-duration="15.68" data-track-index="2">Lithium ions shuttle back and forth.</div>
+  <div id="s02-lithium-ion-grain" class="clip kit-grain" data-start="0" data-duration="15.68" data-track-index="9"></div>
+</div>
+<script>
+(function () {
+  var tl = gsap.timeline({ paused: true });
+  tl.fromTo('#s02-lithium-ion-headline', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: 'expo.out', force3D: true }, 0.08);
+  tl.fromTo('#s02-lithium-ion-drift', { scale: 1 }, { scale: 1.015, duration: 7.84, ease: 'sine.inOut', force3D: true }, 0.08);
+  tl.fromTo('#s02-lithium-ion-drift', { scale: 1.015 }, { scale: 1, duration: 7.84, ease: 'sine.inOut', force3D: true, immediateRender: false }, 7.92);
+  tl.fromTo('#s02-sidea', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.2);
+  tl.fromTo('#s02-sideb', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.7);
+  tl.fromTo('#s02-ions', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.2);
+  tl.fromTo('#s02-charge', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.7);
+  tl.fromTo('#s02-use', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 2.2);
+  tl.fromTo('#s02-cycle', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 2.7);
+  tl.fromTo('#s02-lithium-ion-diagram', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 15.18);
+  tl.fromTo('#s02-lithium-ion-headline', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 15.18);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['s02-lithium-ion'] = tl;
+})();
+</script>
+</template>

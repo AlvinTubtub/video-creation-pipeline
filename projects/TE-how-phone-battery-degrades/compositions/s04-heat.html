@@ -1,0 +1,47 @@
+<template>
+<link rel="stylesheet" href="assets/kit.css">
+<style>
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('assets/fonts/poppins-500.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('assets/fonts/poppins-700.woff2') format('woff2'); }
+#root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: 'Poppins', sans-serif; }
+.s04-heat-layer { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+#s04-heat-headline { position: absolute; left: 60px; top: 268px; width: 880px; font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F; }
+#s04-heat-diagram { position: absolute; left: 90px; top: 470px; width: 900px; height: 710px; }
+</style>
+<div id="root" data-composition-id="s04-heat" data-width="1080" data-height="1920">
+  <div id="s04-heat-ground" class="clip kit-ground" data-start="0" data-duration="13.72" data-track-index="0"></div>
+  <div id="s04-heat-stage" class="clip" data-start="0" data-duration="13.72" data-track-index="1" style="position:absolute; inset:0; perspective:1866px; perspective-origin:50% 50%;">
+    <div id="s04-heat-drift" class="s04-heat-layer">
+      <div class="kit-floor"></div>
+      <div id="s04-heat-diagram">
+        <svg width="900" height="710" viewBox="0 0 900 710">
+<g id="s04-phone"><rect x="330" y="60" width="200" height="360" rx="40" fill="#0B1E3F"/><rect x="354" y="86" width="152" height="308" rx="28" fill="#FFFFFF"/><rect x="410" y="372" width="40" height="8" rx="4" fill="#0B1E3F"/></g>
+<g id="s04-sun"><circle cx="680" cy="150" r="70" fill="#FF7A1A"/><circle cx="680" cy="150" r="34" fill="#FFFFFF"/></g>
+<g id="s04-flame"><text x="680" y="300" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="44" fill="#E5484D">HOT</text></g>
+<g id="s04-gaming"><rect x="180" y="450" width="540" height="58" rx="29" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="450" y="489" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">CHARGING + GAMING + SUN</text></g>
+<g id="s04-scale"><rect x="120" y="560" width="660" height="54" rx="27" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><rect x="330" y="560" width="240" height="54" fill="#0F9F8F"/><text x="150" y="598" font-family="Poppins" font-weight="700" font-size="28" fill="#0B1E3F">0%</text><text x="720" y="598" font-family="Poppins" font-weight="700" font-size="28" fill="#0B1E3F">100%</text><text x="450" y="652" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="28" fill="#0B1E3F">MIDDLE = KINDER</text></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div id="s04-heat-headline" class="clip" data-start="0" data-duration="13.72" data-track-index="2">Heat speeds up the damage.</div>
+  <div id="s04-heat-grain" class="clip kit-grain" data-start="0" data-duration="13.72" data-track-index="9"></div>
+</div>
+<script>
+(function () {
+  var tl = gsap.timeline({ paused: true });
+  tl.fromTo('#s04-heat-headline', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: 'expo.out', force3D: true }, 0.08);
+  tl.fromTo('#s04-heat-drift', { scale: 1 }, { scale: 1.015, duration: 6.86, ease: 'sine.inOut', force3D: true }, 0.08);
+  tl.fromTo('#s04-heat-drift', { scale: 1.015 }, { scale: 1, duration: 6.86, ease: 'sine.inOut', force3D: true, immediateRender: false }, 6.94);
+  tl.fromTo('#s04-phone', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.2);
+  tl.fromTo('#s04-sun', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.7);
+  tl.fromTo('#s04-flame', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.2);
+  tl.fromTo('#s04-gaming', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.7);
+  tl.fromTo('#s04-scale', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 2.2);
+  tl.fromTo('#s04-heat-diagram', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 13.22);
+  tl.fromTo('#s04-heat-headline', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 13.22);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['s04-heat'] = tl;
+})();
+</script>
+</template>
