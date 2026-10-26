@@ -81,6 +81,27 @@ TAGALOG_QUESTION_WORDS = [
     # This corrects an incomplete list; it does not weaken the gate, which
     # still requires a Tagalog interrogative + '?'.
     "saang",
+    # "kaya mo bang" (can you, as in "kaya mo bang bisitahin...?") is a
+    # standard Tagalog question construction. Added 2026-10-26: the gate
+    # false-negatived on TE-how-dns-works, whose approved script and
+    # recorded narration close with "Kung mawawala ang DNS bukas, kaya mo
+    # bang bisitahin ang paborito mong site gamit lang ang numero nito?".
+    # The bare word "kaya" is deliberately NOT added: it also means
+    # "therefore", and every TE closing starts "Kaya ito ang tanong ko
+    # sa inyo.", so it would weaken the gate. The gate still requires
+    # this phrase (or another listed interrogative) in a sentence
+    # ending with '?'.
+    "kaya mo bang",
+    # "ikaw ba" (are you, as in "Ikaw ba ay team charge overnight...?") is
+    # a standard Tagalog question construction. Added 2026-10-26: the gate
+    # false-negatived on TE-how-phone-battery-degrades, whose approved
+    # script and recorded narration close with "Ikaw ba ay team charge
+    # overnight o team charge lang kapag kailangan?". Same precedent as
+    # "saang" and "kaya mo bang": extending the list corrects an
+    # incomplete list, it does not weaken the gate, which still requires
+    # this phrase (or another listed interrogative) in a sentence
+    # ending with '?'.
+    "ikaw ba",
 ]
 
 # Safe-zone containment tolerance (px). profiles.json's own canonical layout
@@ -170,7 +191,16 @@ def iter_text_files(project_dir, kinds):
                 if parts[0] == "compositions" and name.endswith((".html", ".js", ".mjs")):
                     yield rel, read_text(full)
                 elif len(parts) == 1 and name.endswith((".md", ".txt")):
-                    yield rel, read_text(full)
+                    # BUILD-REPORT.md is EXCLUDED: it quotes gate output
+                    # (including past failure messages that list the
+                    # question words), and on 2026-10-26 that quoted text
+                    # false-passed the closing gate for
+                    # TE-how-phone-battery-degrades even though its
+                    # closing question matched no listed word. The film's
+                    # own content (SCRIPT.md, compositions, film.json)
+                    # is what the gate must judge.
+                    if name != "BUILD-REPORT.md":
+                        yield rel, read_text(full)
                 elif rel == "film.json":
                     yield rel, read_text(full)
 
