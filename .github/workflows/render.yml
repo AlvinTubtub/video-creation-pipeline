@@ -38,7 +38,7 @@ jobs:
         working-directory: ${{ inputs.project_dir }}
         run: |
           mkdir -p /tmp/hf-tmp
-          echo "compositions: $(ls compositions/*.html | wc -l) (want 9: 6 scenes + 3 overlays)"
+          echo "compositions: $(ls compositions/*.html | wc -l)"
           TMPDIR=/tmp/hf-tmp npx --yes hyperframes@0.8.117 check
       - name: Render (CPU, no --browser-gpu)
         working-directory: ${{ inputs.project_dir }}
@@ -55,21 +55,36 @@ jobs:
           echo "$PROBE"
           FRAMES=$(echo "$PROBE" | grep -m1 nb_frames | head -1 | cut -d= -f2)
           DUR=$(echo "$PROBE" | grep -m1 '^duration=' | cut -d= -f2 | cut -d. -f1)
-          echo "frames: $FRAMES (want 3440 +/- 120)"
-          echo "duration: ${DUR}s (want 57.34s +/- 2s)"
-          python3 - "$FRAMES" "$DUR" << 'PYEOF'
+          # Expected values are computed from THIS film's own film.json
+          # (duration_s, else narration dur, else sum of scene durations) —
+          # NEVER hardcoded from a previous film. A hardcoded expectation
+          # failed a real run (battery film, run #7: 5,888 frames / 98.13s
+          # rejected against the magnets film's 3,440 / 57.34s).
+          EXPECTED_DUR=$(python3 -c "
+          import json
+          d = json.load(open('film.json'))
+          dur = d.get('duration_s')
+          if not dur and d.get('audio'): dur = d['audio'][0].get('dur')
+          if not dur:
+              dur = sum(s[1] for s in d.get('scenes', []) if isinstance(s, (list, tuple)) and len(s) > 1)
+          print(f'{float(dur):.2f}')
+          ")
+          EXPECTED_FRAMES=$(python3 -c "print(round(float('$EXPECTED_DUR') * 60))")
+          echo "frames: $FRAMES (want $EXPECTED_FRAMES +/- 120)"
+          echo "duration: ${DUR}s (want ${EXPECTED_DUR}s +/- 2s)"
+          python3 - "$FRAMES" "$DUR" "$EXPECTED_FRAMES" "$EXPECTED_DUR" << 'PYEOF'
           import sys
-          frames, dur = int(sys.argv[1]), float(sys.argv[2])
+          frames, dur, exp_frames, exp_dur = int(sys.argv[1]), float(sys.argv[2]), int(sys.argv[3]), float(sys.argv[4])
           ok = True
-          if not (3320 <= frames <= 3560):
-              print(f"STOP CONDITION: frame count {frames} outside 3440 +/- 120."); ok = False
-          if not (55.34 <= dur <= 59.34):
-              print(f"STOP CONDITION: duration {dur}s outside 57.34s +/- 2s."); ok = False
+          if not (exp_frames - 120 <= frames <= exp_frames + 120):
+              print(f"STOP CONDITION: frame count {frames} outside {exp_frames} +/- 120."); ok = False
+          if not (exp_dur - 2 <= dur <= exp_dur + 2):
+              print(f"STOP CONDITION: duration {dur}s outside {exp_dur}s +/- 2s."); ok = False
           sys.exit(0 if ok else 1)
           PYEOF
           echo "================ PHASE 5 ACTIONS RENDER REPORT ================"
-          echo "project:      TE-how-magnets-work (TE vertical film)"
-          echo "format:       1080x1920 @ 60fps, expected duration 57.34s"
+          echo "project:      ${{ inputs.project_dir }}"
+          echo "format:       1080x1920 @ 60fps, expected duration ${EXPECTED_DUR}s"
           echo "frames:       $FRAMES"
           echo "output:       $MP4"
           echo "gpu_mode:     software (CPU render expected on Actions)"
