@@ -1,0 +1,151 @@
+{
+ "_doc": "TE-how-qr-code-works: How a QR code holds a whole website. 9:16 vertical TE film, 103.92s, Carla presenter + Tech Explanasyon badge + burned-in caption overlay. Layout law locked Phase 1.5 (2026-10-24); headlines at y268 (badge pill y168-252).",
+ "audio": [
+  {
+   "dur": 103.92,
+   "id": "vo",
+   "src": "assets/audio/vo-master.wav",
+   "track": 9,
+   "volume": 1
+  }
+ ],
+ "beats_per_bar": 1,
+ "bgm": null,
+ "bpm": 60,
+ "cues": [],
+ "duration_s": 103.92,
+ "fps": 60,
+ "ground": "#F6F2EA",
+ "gsap": "3.14.2",
+ "height": 1920,
+ "hyperframes": "0.8.117",
+ "layout": {
+  "caption_band": {
+   "h": 240,
+   "w": 448,
+   "x": 486,
+   "y": 1280
+  },
+  "presenter_zone": {
+   "feet_y": 1540,
+   "h": 335,
+   "w": 361,
+   "x": 24,
+   "y": 1205
+  },
+  "stage": {
+   "h": 710,
+   "w": 900,
+   "x": 60,
+   "y": 470
+  }
+ },
+ "name": "how-qr-code-works",
+ "overlays": [
+  {
+   "id": "m-kape",
+   "track": 2,
+   "z": 5
+  },
+  {
+   "id": "m-brand",
+   "track": 3,
+   "z": 6
+  },
+  {
+   "id": "m-caption",
+   "track": 4,
+   "z": 7
+  }
+ ],
+ "profile": "TE",
+ "project_id": "TE-how-qr-code-works",
+ "scene_timings": [
+  {
+   "id": "s01-hook",
+   "start": 0.0,
+   "end": 12.57
+  },
+  {
+   "id": "s02-grid",
+   "start": 12.57,
+   "end": 27.65
+  },
+  {
+   "id": "s03-inside",
+   "start": 27.65,
+   "end": 38.71
+  },
+  {
+   "id": "s04-error",
+   "start": 38.71,
+   "end": 52.07
+  },
+  {
+   "id": "s05-why",
+   "start": 52.07,
+   "end": 63.51
+  },
+  {
+   "id": "s06-sizes",
+   "start": 63.51,
+   "end": 77.75
+  },
+  {
+   "id": "s07-dynamic",
+   "start": 77.75,
+   "end": 92.11
+  },
+  {
+   "id": "s08-closing",
+   "start": 92.11,
+   "end": 100.91
+  },
+  {
+   "id": "s09-signoff",
+   "start": 100.91,
+   "end": 103.92
+  }
+ ],
+ "scenes": [
+  [
+   "s01-hook",
+   12.57
+  ],
+  [
+   "s02-grid",
+   15.08
+  ],
+  [
+   "s03-inside",
+   11.06
+  ],
+  [
+   "s04-error",
+   13.36
+  ],
+  [
+   "s05-why",
+   11.44
+  ],
+  [
+   "s06-sizes",
+   14.24
+  ],
+  [
+   "s07-dynamic",
+   14.36
+  ],
+  [
+   "s08-closing",
+   8.8
+  ],
+  [
+   "s09-signoff",
+   3.01
+  ]
+ ],
+ "sfx": {},
+ "stage": "GATES-PENDING",
+ "width": 1080
+}
