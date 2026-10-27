@@ -1,0 +1,42 @@
+<template>
+<link rel="stylesheet" href="assets/kit.css">
+<style>
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('assets/fonts/poppins-500.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('assets/fonts/poppins-700.woff2') format('woff2'); }
+#root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: 'Poppins', sans-serif; }
+.s02-grid-layer { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+#s02-grid-headline { position: absolute; left: 60px; top: 268px; width: 880px; font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F; }
+#s02-grid-diagram { position: absolute; left: 90px; top: 470px; width: 900px; height: 710px; }
+</style>
+<div id="root" data-composition-id="s02-grid" data-width="1080" data-height="1920">
+  <div id="s02-grid-ground" class="clip kit-ground" data-start="0" data-duration="11.36" data-track-index="0"></div>
+  <div id="s02-grid-stage" class="clip" data-start="0" data-duration="11.36" data-track-index="1" style="position:absolute; inset:0; perspective:1866px; perspective-origin:50% 50%;">
+    <div id="s02-grid-drift" class="s02-grid-layer">
+      <div class="kit-floor"></div>
+      <div id="s02-grid-diagram">
+        <svg width="900" height="710" viewBox="0 0 900 710">
+<g id="s02-glass"><rect x="150" y="60" width="600" height="60" rx="12" fill="#DCEEFF" stroke="#0B1E3F" stroke-width="4"/><text x="450" y="100" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="28" fill="#0B1E3F">GLASS</text></g><g id="s02-gridlines"><g stroke="#0F9F8F" stroke-width="3"><line x1="150" y1="150" x2="150" y2="510"/><line x1="270" y1="150" x2="270" y2="510"/><line x1="390" y1="150" x2="390" y2="510"/><line x1="510" y1="150" x2="510" y2="510"/><line x1="630" y1="150" x2="630" y2="510"/><line x1="750" y1="150" x2="750" y2="510"/><line x1="150" y1="150" x2="750" y2="150"/><line x1="150" y1="240" x2="750" y2="240"/><line x1="150" y1="330" x2="750" y2="330"/><line x1="150" y1="420" x2="750" y2="420"/><line x1="150" y1="510" x2="750" y2="510"/></g></g><g id="s02-touch"><circle cx="450" cy="330" r="34" fill="#FF7A1A"/><circle cx="450" cy="330" r="60" fill="none" stroke="#FF7A1A" stroke-width="4"/></g><g id="s02-label"><rect x="270" y="580" width="360" height="58" rx="29" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="450" y="619" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">ELECTRIC FIELD</text></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div id="s02-grid-headline" class="clip" data-start="0" data-duration="11.36" data-track-index="2"><div style="font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F;">Under the glass: an invisible grid</div></div>
+  <div id="s02-grid-grain" class="clip kit-grain" data-start="0" data-duration="11.36" data-track-index="9"></div>
+</div>
+<script>
+(function () {
+  var tl = gsap.timeline({ paused: true });
+  tl.fromTo('#s02-grid-headline', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: 'expo.out', force3D: true }, 0.08);
+  tl.fromTo('#s02-grid-drift', { scale: 1 }, { scale: 1.015, duration: 5.68, ease: 'sine.inOut', force3D: true }, 0.08);
+  tl.fromTo('#s02-grid-drift', { scale: 1.015 }, { scale: 1, duration: 5.68, ease: 'sine.inOut', force3D: true, immediateRender: false }, 5.76);
+  tl.fromTo('#s02-glass', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.2);
+  tl.fromTo('#s02-gridlines', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.7);
+  tl.fromTo('#s02-touch', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.2);
+  tl.fromTo('#s02-label', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.7);
+  tl.fromTo('#s02-grid-diagram', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 10.86);
+  tl.fromTo('#s02-grid-headline', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 10.86);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['s02-grid'] = tl;
+})();
+</script>
+</template>

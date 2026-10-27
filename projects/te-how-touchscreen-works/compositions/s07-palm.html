@@ -1,0 +1,42 @@
+<template>
+<link rel="stylesheet" href="assets/kit.css">
+<style>
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('assets/fonts/poppins-500.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('assets/fonts/poppins-700.woff2') format('woff2'); }
+#root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: 'Poppins', sans-serif; }
+.s07-palm-layer { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+#s07-palm-headline { position: absolute; left: 60px; top: 268px; width: 880px; font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F; }
+#s07-palm-diagram { position: absolute; left: 90px; top: 470px; width: 900px; height: 710px; }
+</style>
+<div id="root" data-composition-id="s07-palm" data-width="1080" data-height="1920">
+  <div id="s07-palm-ground" class="clip kit-ground" data-start="0" data-duration="10.38" data-track-index="0"></div>
+  <div id="s07-palm-stage" class="clip" data-start="0" data-duration="10.38" data-track-index="1" style="position:absolute; inset:0; perspective:1866px; perspective-origin:50% 50%;">
+    <div id="s07-palm-drift" class="s07-palm-layer">
+      <div class="kit-floor"></div>
+      <div id="s07-palm-diagram">
+        <svg width="900" height="710" viewBox="0 0 900 710">
+<g id="s07-palm"><ellipse cx="330" cy="300" rx="130" ry="90" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="330" y="312" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">PALM</text></g><g id="s07-x2"><line x1="560" y1="230" x2="660" y2="330" stroke="#E5484D" stroke-width="10"/><line x1="660" y1="230" x2="560" y2="330" stroke="#E5484D" stroke-width="10"/></g><g id="s07-dot"><circle cx="610" cy="480" r="30" fill="#FF7A1A"/><circle cx="610" cy="480" r="52" fill="none" stroke="#FF7A1A" stroke-width="4"/></g><g id="s07-label"><rect x="240" y="580" width="420" height="58" rx="29" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="450" y="619" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">PALM REJECTION</text></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div id="s07-palm-headline" class="clip" data-start="0" data-duration="10.38" data-track-index="2"><div style="font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F;">Palm rejected. Fingertip kept.</div></div>
+  <div id="s07-palm-grain" class="clip kit-grain" data-start="0" data-duration="10.38" data-track-index="9"></div>
+</div>
+<script>
+(function () {
+  var tl = gsap.timeline({ paused: true });
+  tl.fromTo('#s07-palm-headline', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: 'expo.out', force3D: true }, 0.08);
+  tl.fromTo('#s07-palm-drift', { scale: 1 }, { scale: 1.015, duration: 5.19, ease: 'sine.inOut', force3D: true }, 0.08);
+  tl.fromTo('#s07-palm-drift', { scale: 1.015 }, { scale: 1, duration: 5.19, ease: 'sine.inOut', force3D: true, immediateRender: false }, 5.27);
+  tl.fromTo('#s07-palm', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.2);
+  tl.fromTo('#s07-x2', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.7);
+  tl.fromTo('#s07-dot', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.2);
+  tl.fromTo('#s07-label', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.7);
+  tl.fromTo('#s07-palm-diagram', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 9.88);
+  tl.fromTo('#s07-palm-headline', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 9.88);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['s07-palm'] = tl;
+})();
+</script>
+</template>

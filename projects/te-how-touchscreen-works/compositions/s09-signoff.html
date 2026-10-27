@@ -1,0 +1,34 @@
+<template>
+<link rel="stylesheet" href="assets/kit.css">
+<style>
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('assets/fonts/poppins-500.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('assets/fonts/poppins-700.woff2') format('woff2'); }
+#root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: 'Poppins', sans-serif; }
+.s09-layer { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+#s09-card { position: absolute; left: 48px; top: 560px; width: 884px; text-align: center; }
+#s09-card .kit-cta { max-width: 860px; }
+#s09-sub { margin-top: 34px; font: 500 40px/1.3 'Poppins', sans-serif; color: #0B1E3F; }
+</style>
+<div id="root" data-composition-id="s09-signoff" data-width="1080" data-height="1920">
+  <div id="s09-ground" class="clip kit-ground" data-start="0" data-duration="3.3" data-track-index="0"></div>
+  <div id="s09-stage" class="clip" data-start="0" data-duration="3.3" data-track-index="1" style="position:absolute; inset:0; perspective:1866px; perspective-origin:50% 50%;">
+    <div id="s09-drift" class="s09-layer"><div class="kit-floor"></div></div>
+  </div>
+  <div id="s09-card" class="clip" data-start="0" data-duration="3.3" data-track-index="2">
+    <div class="kit-logo" style="--h:150px"><b>Tech <i>Explanasyon</i></b></div>
+    <div style="margin-top:44px;"><span class="kit-cta">Follow me for more tech explained. See yah.</span></div>
+    <div id="s09-sub">New tech, explained simply.</div>
+  </div>
+  <div id="s09-grain" class="clip kit-grain" data-start="0" data-duration="3.3" data-track-index="9"></div>
+</div>
+<script>
+(function () {
+  var tl = gsap.timeline({ paused: true });
+  tl.fromTo('#s09-drift', { scale: 1, rotationY: 0 }, { scale: 1.015, rotationY: 0.8, duration: 1.51, ease: 'sine.inOut', force3D: true }, 0.08);
+  tl.fromTo('#s09-drift', { scale: 1.015, rotationY: 0.8 }, { scale: 1, rotationY: 0, duration: 1.51, ease: 'sine.inOut', force3D: true, immediateRender: false }, 1.59);
+  tl.fromTo('#s09-card', { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.6, ease: 'expo.out', force3D: true }, 0.1);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['s09-signoff'] = tl;
+})();
+</script>
+</template>

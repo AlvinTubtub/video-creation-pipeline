@@ -1,0 +1,42 @@
+<template>
+<link rel="stylesheet" href="assets/kit.css">
+<style>
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('assets/fonts/poppins-500.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('assets/fonts/poppins-700.woff2') format('woff2'); }
+#root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: 'Poppins', sans-serif; }
+.s03-measure-layer { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+#s03-measure-headline { position: absolute; left: 60px; top: 268px; width: 880px; font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F; }
+#s03-measure-diagram { position: absolute; left: 90px; top: 470px; width: 900px; height: 710px; }
+</style>
+<div id="root" data-composition-id="s03-measure" data-width="1080" data-height="1920">
+  <div id="s03-measure-ground" class="clip kit-ground" data-start="0" data-duration="14.06" data-track-index="0"></div>
+  <div id="s03-measure-stage" class="clip" data-start="0" data-duration="14.06" data-track-index="1" style="position:absolute; inset:0; perspective:1866px; perspective-origin:50% 50%;">
+    <div id="s03-measure-drift" class="s03-measure-layer">
+      <div class="kit-floor"></div>
+      <div id="s03-measure-diagram">
+        <svg width="900" height="710" viewBox="0 0 900 710">
+<g id="s03-grid2"><g stroke="#0F9F8F" stroke-width="3"><line x1="180" y1="120" x2="180" y2="480"/><line x1="315" y1="120" x2="315" y2="480"/><line x1="450" y1="120" x2="450" y2="480"/><line x1="585" y1="120" x2="585" y2="480"/><line x1="720" y1="120" x2="720" y2="480"/><line x1="180" y1="120" x2="720" y2="120"/><line x1="180" y1="210" x2="720" y2="210"/><line x1="180" y1="300" x2="720" y2="300"/><line x1="180" y1="390" x2="720" y2="390"/><line x1="180" y1="480" x2="720" y2="480"/></g><g fill="#0F9F8F"><circle cx="180" cy="120" r="10"/><circle cx="180" cy="210" r="10"/><circle cx="180" cy="300" r="10"/><circle cx="180" cy="390" r="10"/><circle cx="180" cy="480" r="10"/><circle cx="315" cy="120" r="10"/><circle cx="315" cy="210" r="10"/><circle cx="315" cy="300" r="10"/><circle cx="315" cy="390" r="10"/><circle cx="315" cy="480" r="10"/><circle cx="450" cy="120" r="10"/><circle cx="450" cy="210" r="10"/><circle cx="450" cy="300" r="10"/><circle cx="450" cy="390" r="10"/><circle cx="450" cy="480" r="10"/><circle cx="585" cy="120" r="10"/><circle cx="585" cy="210" r="10"/><circle cx="585" cy="300" r="10"/><circle cx="585" cy="390" r="10"/><circle cx="585" cy="480" r="10"/><circle cx="720" cy="120" r="10"/><circle cx="720" cy="210" r="10"/><circle cx="720" cy="300" r="10"/><circle cx="720" cy="390" r="10"/><circle cx="720" cy="480" r="10"/></g></g><g id="s03-strong"><circle cx="450" cy="300" r="42" fill="#FF7A1A" stroke="#0B1E3F" stroke-width="4"/><text x="450" y="312" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="28" fill="#0B1E3F">TAP</text></g><g id="s03-arrow"><path d="M 450 360 L 620 520" fill="none" stroke="#0B1E3F" stroke-width="6"/><path d="M 620 520 L 596 500 L 600 532 Z" fill="#0B1E3F"/></g><g id="s03-label"><rect x="240" y="580" width="420" height="58" rx="29" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="450" y="619" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">HUNDREDS PER SECOND</text></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div id="s03-measure-headline" class="clip" data-start="0" data-duration="14.06" data-track-index="2"><div style="font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F;">The controller finds the strongest point</div></div>
+  <div id="s03-measure-grain" class="clip kit-grain" data-start="0" data-duration="14.06" data-track-index="9"></div>
+</div>
+<script>
+(function () {
+  var tl = gsap.timeline({ paused: true });
+  tl.fromTo('#s03-measure-headline', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: 'expo.out', force3D: true }, 0.08);
+  tl.fromTo('#s03-measure-drift', { scale: 1 }, { scale: 1.015, duration: 7.03, ease: 'sine.inOut', force3D: true }, 0.08);
+  tl.fromTo('#s03-measure-drift', { scale: 1.015 }, { scale: 1, duration: 7.03, ease: 'sine.inOut', force3D: true, immediateRender: false }, 7.11);
+  tl.fromTo('#s03-grid2', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.2);
+  tl.fromTo('#s03-strong', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.7);
+  tl.fromTo('#s03-arrow', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.2);
+  tl.fromTo('#s03-label', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.7);
+  tl.fromTo('#s03-measure-diagram', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 13.56);
+  tl.fromTo('#s03-measure-headline', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 13.56);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['s03-measure'] = tl;
+})();
+</script>
+</template>

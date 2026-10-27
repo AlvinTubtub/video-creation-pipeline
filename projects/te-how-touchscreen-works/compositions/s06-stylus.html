@@ -1,0 +1,42 @@
+<template>
+<link rel="stylesheet" href="assets/kit.css">
+<style>
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('assets/fonts/poppins-500.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('assets/fonts/poppins-700.woff2') format('woff2'); }
+#root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: 'Poppins', sans-serif; }
+.s06-stylus-layer { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+#s06-stylus-headline { position: absolute; left: 60px; top: 268px; width: 880px; font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F; }
+#s06-stylus-diagram { position: absolute; left: 90px; top: 470px; width: 900px; height: 710px; }
+</style>
+<div id="root" data-composition-id="s06-stylus" data-width="1080" data-height="1920">
+  <div id="s06-stylus-ground" class="clip kit-ground" data-start="0" data-duration="9.98" data-track-index="0"></div>
+  <div id="s06-stylus-stage" class="clip" data-start="0" data-duration="9.98" data-track-index="1" style="position:absolute; inset:0; perspective:1866px; perspective-origin:50% 50%;">
+    <div id="s06-stylus-drift" class="s06-stylus-layer">
+      <div class="kit-floor"></div>
+      <div id="s06-stylus-diagram">
+        <svg width="900" height="710" viewBox="0 0 900 710">
+<g id="s06-pen"><rect x="420" y="80" width="60" height="320" rx="30" fill="#0B1E3F" transform="rotate(20 450 240)"/><polygon points="450,420 430,480 470,480" fill="#FF7A1A"/></g><g id="s06-waves"><path d="M 380 480 Q 450 520 520 480" fill="none" stroke="#0F9F8F" stroke-width="5"/><path d="M 380 510 Q 450 550 520 510" fill="none" stroke="#0F9F8F" stroke-width="4"/></g><g id="s06-line"><path d="M 250 600 Q 450 560 650 600" fill="none" stroke="#0B1E3F" stroke-width="6"/></g><g id="s06-label"><rect x="270" y="630" width="360" height="58" rx="29" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="450" y="669" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">PRECISE LINE</text></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div id="s06-stylus-headline" class="clip" data-start="0" data-duration="9.98" data-track-index="2"><div style="font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F;">A stylus talks to the grid</div></div>
+  <div id="s06-stylus-grain" class="clip kit-grain" data-start="0" data-duration="9.98" data-track-index="9"></div>
+</div>
+<script>
+(function () {
+  var tl = gsap.timeline({ paused: true });
+  tl.fromTo('#s06-stylus-headline', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: 'expo.out', force3D: true }, 0.08);
+  tl.fromTo('#s06-stylus-drift', { scale: 1 }, { scale: 1.015, duration: 4.99, ease: 'sine.inOut', force3D: true }, 0.08);
+  tl.fromTo('#s06-stylus-drift', { scale: 1.015 }, { scale: 1, duration: 4.99, ease: 'sine.inOut', force3D: true, immediateRender: false }, 5.07);
+  tl.fromTo('#s06-pen', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.2);
+  tl.fromTo('#s06-waves', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.7);
+  tl.fromTo('#s06-line', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.2);
+  tl.fromTo('#s06-label', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.7);
+  tl.fromTo('#s06-stylus-diagram', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 9.48);
+  tl.fromTo('#s06-stylus-headline', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 9.48);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['s06-stylus'] = tl;
+})();
+</script>
+</template>

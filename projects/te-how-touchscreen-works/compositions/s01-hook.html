@@ -1,0 +1,42 @@
+<template>
+<link rel="stylesheet" href="assets/kit.css">
+<style>
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('assets/fonts/poppins-500.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('assets/fonts/poppins-700.woff2') format('woff2'); }
+#root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: 'Poppins', sans-serif; }
+.s01-hook-layer { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+#s01-hook-headline { position: absolute; left: 60px; top: 268px; width: 880px; font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F; }
+#s01-hook-diagram { position: absolute; left: 90px; top: 560px; width: 900px; height: 620px; }
+</style>
+<div id="root" data-composition-id="s01-hook" data-width="1080" data-height="1920">
+  <div id="s01-hook-ground" class="clip kit-ground" data-start="0" data-duration="12.58" data-track-index="0"></div>
+  <div id="s01-hook-stage" class="clip" data-start="0" data-duration="12.58" data-track-index="1" style="position:absolute; inset:0; perspective:1866px; perspective-origin:50% 50%;">
+    <div id="s01-hook-drift" class="s01-hook-layer">
+      <div class="kit-floor"></div>
+      <div id="s01-hook-diagram">
+        <svg width="900" height="620" viewBox="0 0 900 620">
+<g id="s01-phone"><rect x="330" y="120" width="240" height="400" rx="40" fill="#0B1E3F"/><rect x="354" y="148" width="192" height="344" rx="28" fill="#FFFFFF"/></g><g id="s01-finger"><ellipse cx="450" cy="300" rx="52" ry="70" fill="#FFD9B0" stroke="#0B1E3F" stroke-width="4"/><path d="M 450 370 L 450 470" stroke="#0B1E3F" stroke-width="4"/></g><g id="s01-ripple"><circle cx="450" cy="300" r="80" fill="none" stroke="#FF7A1A" stroke-width="6"/><circle cx="450" cy="300" r="110" fill="none" stroke="#FF7A1A" stroke-width="4"/><circle cx="450" cy="300" r="16" fill="#FF7A1A"/></g><g id="s01-label"><rect x="300" y="540" width="300" height="58" rx="29" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="4"/><text x="450" y="579" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#0B1E3F">TAP POINT</text></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div id="s01-hook-headline" class="clip" data-start="0" data-duration="12.58" data-track-index="2"><div id="s01-hook-kicker" style="font: 700 34px/1.2 'Poppins', sans-serif; letter-spacing: .14em; color: #0F9F8F; margin-bottom: 14px;">TECH EXPLANASYON</div><div style="font: 700 68px/1.12 'Poppins', sans-serif; color: #0B1E3F;">How does your phone know exactly where your finger landed?</div></div>
+  <div id="s01-hook-grain" class="clip kit-grain" data-start="0" data-duration="12.58" data-track-index="9"></div>
+</div>
+<script>
+(function () {
+  var tl = gsap.timeline({ paused: true });
+  tl.fromTo('#s01-hook-headline', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: 'expo.out', force3D: true }, 0.08);
+  tl.fromTo('#s01-hook-drift', { scale: 1 }, { scale: 1.015, duration: 6.29, ease: 'sine.inOut', force3D: true }, 0.08);
+  tl.fromTo('#s01-hook-drift', { scale: 1.015 }, { scale: 1, duration: 6.29, ease: 'sine.inOut', force3D: true, immediateRender: false }, 6.37);
+  tl.fromTo('#s01-phone', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.2);
+  tl.fromTo('#s01-finger', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 0.7);
+  tl.fromTo('#s01-ripple', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.2);
+  tl.fromTo('#s01-label', { scale: 0, transformOrigin: '450px 355px', opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', force3D: true }, 1.7);
+  tl.fromTo('#s01-hook-diagram', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 12.08);
+  tl.fromTo('#s01-hook-headline', { opacity: 1 }, { opacity: 0, duration: 0.4, ease: 'power2.in', immediateRender: false, force3D: true }, 12.08);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['s01-hook'] = tl;
+})();
+</script>
+</template>
