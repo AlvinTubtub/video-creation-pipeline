@@ -1,4 +1,4 @@
-# Video Creation Pipeline — KAPE Explainer
+# Video Creation Pipeline — Tech Explanasyon
 
 The complete pipeline behind the **Tech Explanasyon** explainer films:
 script → storyboard → scene builds → quality gates → ready-to-render project
