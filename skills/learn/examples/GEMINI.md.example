@@ -1,0 +1,22 @@
+# Project Guidelines & Rules (GEMINI.md Example)
+
+These rules are permanently enforced across all tasks in this repository.
+
+---
+
+## 1. Code Style & Architecture
+- All API handlers must validate request schemas using Zod or Pydantic before processing.
+- Maintain a strict separation between business logic and database queries.
+- Never hardcode API keys, secrets, or environment credentials.
+
+---
+
+## 2. Testing & Verification
+- Always run unit tests before marking a feature complete: `npm test` or `pytest`.
+- Ensure new endpoints have at least 80% test coverage.
+
+---
+
+## 3. Communication & Output
+- Format responses concisely using GitHub-flavored Markdown.
+- Provide clickable file links using `file://` scheme when referencing files.
